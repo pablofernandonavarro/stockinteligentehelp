@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('post_etiqueta', function (Blueprint $table) {
+        Schema::create('etiqueta_post', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('post_id');
             $table->unsignedBigInteger('etiqueta_id');
-            
+
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
             $table->foreign('etiqueta_id')->references('id')->on('etiquetas')->onDelete('cascade');
 
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('post_etiqueta');
+        Schema::dropIfExists('etiqueta_post');
     }
 };

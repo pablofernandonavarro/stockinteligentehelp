@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Image;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,6 +10,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class ImageFactory extends Factory
 {
+
+    protected $model= Image::class;
     /**
      * Define the model's default state.
      *
@@ -17,7 +20,7 @@ class ImageFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'url'=> '/posts'.$this->faker->image('public/storage/posts',640,480,null,true)
         ];
     }
 }
