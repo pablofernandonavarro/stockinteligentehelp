@@ -20,7 +20,7 @@
 
             <!-- // * ---------- contenido Relacionado ---------------------------------------------------------------------------------- -->
             <aside>
-                <h1 class="text-2xl fond-bold test-gray-600 mb-4">
+                <h1 class="text-2xl fond-bold test-gray-600 mb-2">
                     Más en {{$post->category->name}}
                 </h1>
                 <ul>

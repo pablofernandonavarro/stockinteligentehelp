@@ -16,9 +16,12 @@ Route::middleware([
 
 
 
- 
+
 // !---------------------------------------------- Rutas Aplicacion -------------------------------------------------------------------------------
 
 
 Route::get('/',[PostController::class,'index'])->name('posts.index');
 Route::get('posts/{post}',[PostController::class,'show'])->name('posts.show');
+Route::get('category/{category}',[PostController::class,'category'])->name('posts.category');
+Route::get('etiqueta/{etiqueta}',[PostController::class,'etiqueta'])->name('posts.etiqueta');
+

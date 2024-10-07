@@ -8,7 +8,7 @@
 
                     <div>
                         @foreach ($post->etiquetas as $etiqueta)
-                        <a href="" class="inline-block px-3 h-6 bg-{{ $etiqueta->color }}-600 text-white rounded-full">
+                        <a href="{{route('posts.etiqueta',$etiqueta)}}" class="inline-block px-3 h-6 bg-{{ $etiqueta->color }}-600 text-white rounded-full">
                             {{ $etiqueta->name }}
                         </a>
                         @endforeach
@@ -25,8 +25,8 @@
             </article>
             @endforeach
         </div>
-       
- 
+
+
     <div class=" mt-4 py-4 items-center justify-between">
 
         {{ $posts->links() }}
