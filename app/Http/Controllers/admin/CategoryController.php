@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -30,12 +31,21 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name'=> 'required',
-            'slug'=> 'required|unique:categories',
-        ]);
 
-        return $request;
+        try {
+            $validatedData = $request->validate([
+                'name'=> 'required',
+                            ]);
+                            $slug = Str::slug($validatedData['name'], '-');
+            $category = Category::create([
+                'name' => $validatedData['name'],
+                'slug' => $validatedData['name'],
+            ]);
+
+            return redirect()->route('admin.categories.edit', compact('category'));
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+        }
     }
 
     /**
@@ -51,6 +61,7 @@ class CategoryController extends Controller
      */
     public function edit(Category  $category)
     {
+
         return view('admin.categories.edit', compact('category'));
     }
 
