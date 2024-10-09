@@ -328,10 +328,11 @@ return [
             'icon' => 'fab fa-fw fa-buffer',
         ],
         [
-            'text' => 'change_password',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'text' => 'Etiquetas',
+            'route' => 'admin.etiquetas.index',
+            'icon' => 'far fa-fw fa-bookmark',
         ],
+       
         [
             'text' => 'multilevel',
             'icon' => 'fas fa-fw fa-share',
@@ -370,22 +371,7 @@ return [
                 ],
             ],
         ],
-        ['header' => 'labels'],
-        [
-            'text' => 'important',
-            'icon_color' => 'red',
-            'url' => '#',
-        ],
-        [
-            'text' => 'warning',
-            'icon_color' => 'yellow',
-            'url' => '#',
-        ],
-        [
-            'text' => 'information',
-            'icon_color' => 'cyan',
-            'url' => '#',
-        ],
+        
     ],
 
     /*

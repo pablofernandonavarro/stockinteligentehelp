@@ -3,7 +3,7 @@
 @section('title', 'StockInteligente')
 
 @section('content_header')
-<h1>Listados categorias:</h1>                   
+<h1>Mostar Etiquetas:</h1>                   
 @stop
 
 @section('content')
@@ -26,16 +26,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($categories as $category)
+                    @foreach ($etiquetas as $etiqueta)
                         <tr>
 
-                            <td>{{ $category->id }}</td>
-                            <td>{{ $category->name }}</td>
+                            <td>{{ $etiqueta->id }}</td>
+                            <td>{{ $etiqueta->name }}</td>
+                            <td>{{ $etiqueta->color }}</td>
                             <td width="10px">
-                            <a href="{{route('admin.categories.edit',$category)}}" class="btn btn-sm btn-primary">Editar</a>
+                            <a href="{{route('admin.etiquetas.edit',$etiqueta)}}" class="btn btn-sm btn-primary">Editar</a>
                             </td>
                             <td width="10px">
-                                <form action="{{route('admin.categories.destroy',$category)}}" method="POST">
+                                <form action="{{route('admin.etiquetas.destroy',$etiqueta)}}" method="POST">
                                     @csrf
                                     @method('delete')
                                    <button class="btn btn-danger btn-sm">Borrar</button>

@@ -8,20 +8,27 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
-    protected $fillable=[
+    protected $fillable = [
         'name',
         'slug'
-    ] ;
+    ];
 
-    public function posts(){
+    public function posts()
+    {
         return $this->hasMany(Post::class);
-       }
-       public function category(){
+    }
+    public function category()
+    {
         return $this->belongsTo(Category::class);
-       }
-       public function etiquetas(){
+    }
+    public function etiquetas()
+    {
         return $this->belongsToMany(Etiqueta::class);
-       }
-
-
+    }
+    public function getRouteKeyName()
+    {
+        return "slug";
+   
+        
+    }
 }
