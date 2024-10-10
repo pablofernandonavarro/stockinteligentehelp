@@ -13,37 +13,46 @@ class EtiquetaController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-   {   
-          $etiquetas= Etiqueta::all();
-        return view('admin.etiquetas.index',compact('etiquetas'));
+    {
+        $etiquetas = Etiqueta::all();
+        return view('admin.etiquetas.index', compact('etiquetas'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Etiqueta $etiqueta)
     {
-        return view('admin.etiquetas.create');
+        $coloresTailwind = [
+            'gray' => 'Color gris',
+            'red' => 'Color rojo',
+            'yellow' => 'Color amarillo',
+            'green' => 'Color verde',
+            'blue' => 'Color azul',
+            'indigo' => 'Color indigo',
+            'purple' => 'Color Purpura',
+            'pink' => 'Color rosa',
+        ];
+        return view('admin.etiquetas.create', compact('etiqueta','coloresTailwind'));
     }
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request,Etiqueta $etiqueta)
-    {  
+    public function store(Request $request, Etiqueta $etiqueta)
+    {
         $validatedData = $request->validate([
             'name' => 'required',
-            'color'=> 'required'
+            'color' => 'required'
         ]);
         $slug = Str::slug($validatedData['name'], '-');
         $etiqueta->create([
             'name' => $validatedData['name'],
-            'color'=> $validatedData['color'],
+            'color' => $validatedData['color'],
             'slug' => $slug,
         ]);
 
         return redirect()->route('admin.etiquetas.index', compact('etiqueta'))
             ->with('mesagge', 'La Etiqueta se creo con exíto');
-        
     }
 
     /**
@@ -51,15 +60,25 @@ class EtiquetaController extends Controller
      */
     public function show(Etiqueta $etiqueta)
     {
-        return view('admin.etiquetas.show',compact('etiqueta'));
+        return view('admin.etiquetas.show', compact('etiqueta'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit( Etiqueta $etiqueta)
-    {
-        return view('admin.etiquetas.edit',compact('etiqueta'));
+    public function edit(Etiqueta $etiqueta)
+    {  
+        $coloresTailwind = [
+            'gray' => 'Color gris',
+            'red' => 'Color rojo',
+            'yellow' => 'Color amarillo',
+            'green' => 'Color verde',
+            'blue' => 'Color azul',
+            'indigo' => 'Color indigo',
+            'purple' => 'Color Purpura',
+            'pink' => 'Color rosa',
+        ];
+        return view('admin.etiquetas.edit', compact('etiqueta','coloresTailwind'));;
     }
 
     /**
@@ -69,12 +88,12 @@ class EtiquetaController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required',
-            'color'=> 'required'
+            'color' => 'required'
         ]);
         $slug = Str::slug($validatedData['name'], '-');
         $etiqueta->update([
             'name' => $validatedData['name'],
-            'color'=> $validatedData['color'],
+            'color' => $validatedData['color'],
             'slug' => $slug,
         ]);
 
@@ -86,8 +105,8 @@ class EtiquetaController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(Etiqueta $etiqueta)
-    {  
+    {
         $etiqueta->delete();
-         return redirect()->route('admin.etiquetas.index');
+        return redirect()->route('admin.etiquetas.index');
     }
 }

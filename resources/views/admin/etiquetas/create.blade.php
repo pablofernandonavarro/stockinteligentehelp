@@ -11,17 +11,7 @@
         <div class="card-body">
             {{ html()->form('POST', route('admin.etiquetas.store'))->class('form-horizontal')->open() }}
 
-            <div class="mb-3 ">
-                {{ html()->label('Nombre de la categoría', 'category_name')->class('form-label') }}
-                {{ html()->text('name')->class('form-control')->placeholder('Ingrese el nombre de la categoría') }}
-                {{ html()->label('Color de la categoría', 'color')->class('form-label') }}
-                {{ html()->text('color')->class('form-control')->placeholder('Ingrese el color de la categoría') }}
-            @error('name')
-            <span class= 'text-danger'>{{$message}}</span>
-            @enderror
-
-
-            </div>
+            @include('admin.etiquetas.partials.form')
 
             <div class="mb-3">
                 {{ html()->submit('Crear Categoria')->class('btn btn-success') }}
