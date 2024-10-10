@@ -3,7 +3,7 @@
 @section('title', 'StockInteligente')
 
 @section('content_header')
-    <h1>Home:</h1>
+    <h1 class="d-flex justify-content-center mx-auto my-auto">Stock Inteligente</h1>
 @stop
 
 @section('content')
