@@ -25,10 +25,11 @@
         <span class='text-danger'>{{$message}}</span>
         @enderror
     </div>
+
     <div class="form-group">
         {{ html()->label('Seleccionar categoria', 'category_id')->class('form-label') }}
         {{ html()->select('etiqueta_id', $categories)->class('form-control') }}
-        @error('etiqueta_id')
+        @error('category_id')
         <span class='text-danger'>{{$message}}</span>
         @enderror
     </div>
@@ -44,41 +45,45 @@
         @error('etiquetas')
         <span class='text-danger'>{{$message}}</span>
         @enderror
-        <div class="form-group">
-            <p class="font-weight-bold">Estado:</p>
-            <label>
-                {{ html()->radio('status', 1,'true')->class('form-control') }}
-                Borrador
-            </label>
-            <label>
-                {{ html()->radio('status', 2,)->class('form-control') }}
-                 Publicado
-            </label>
-        </div>
-
-
-
-
-
-
-
     </div>
     <div class="form-group">
-        {{ html()->label('Extracto:', 'extract')->class('form-label') }}
-        {{ html()->textarea('extract', null)->class('form-control')->id('extract')}}
+        <p class="font-weight-bold">Estado:</p>
+        <label>
+            {{ html()->radio('status', 1,'true')->class('form-control') }}
+            Borrador
+        </label>
+        <label>
+            {{ html()->radio('status', 2,)->class('form-control') }}
+            Publicado
+        </label>
+        @error('status')
+        <span class='text-danger'>{{$message}}</span>
+        @enderror
+
     </div>
-    <div class="form-group">
-        {{ html()->label('Cuerpo del la Publicación:', 'body')->class('form-label') }}
-        {{ html()->textarea('body', null)->class('form-control') }}
-    </div>
+</div>
+<div class="form-group">
+    {{ html()->label('Extracto:', 'extract')->class('form-label') }}
+    {{ html()->textarea('extract', null)->class('form-control')->id('extract')}}
+    @error('extract')
+        <span class='text-danger'>{{$message}}</span>
+        @enderror
+</div>
+<div class="form-group">
+    {{ html()->label('Cuerpo del la Publicación:', 'body')->class('form-label') }}
+    {{ html()->textarea('body', null)->class('form-control') }}
+</div>
+@error('body')
+        <span class='text-danger'>{{$message}}</span>
+        @enderror
 
 
 
-    <div class="mb-3">
-        {{ html()->submit('Crear Publicación')->class('btn btn-secondary float-right my-2 mx-2') }}
-    </div>
+<div class="mb-3">
+    {{ html()->submit('Crear Publicación')->class('btn btn-secondary float-right my-2 mx-2') }}
+</div>
 
-    {{ html()->form()->close() }}
+{{ html()->form()->close() }}
 </div>
 @stop
 

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
 use App\Models\Etiqueta;
+use App\Http\Requests\StorePostRequest;
 
 class PostController extends Controller
 {
@@ -35,9 +36,11 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
+
     {
-        return view("admin.post.index");
+        return "las validaciones pasaron";
+        // return view("admin.post.index");
     }
 
     /**
