@@ -14,9 +14,9 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => '',
     'title_prefix' => '',
-    'title_postfix' => '',
+    'title_postfix' => '|Stock Inteligente',
 
     /*
     |--------------------------------------------------------------------------
@@ -30,7 +30,7 @@ return [
     |
     */
 
-    'use_ico_only' => false,
+    'use_ico_only' => true,
     'use_full_favicon' => false,
 
     /*
@@ -110,7 +110,7 @@ return [
     */
 
     'preloader' => [
-        'enabled' => true,
+        'enabled' => false,
         'mode' => 'fullscreen',
         'img' => [
             'path' => 'vendor/adminlte/dist/img/logo_SI.jpeg',
@@ -236,7 +236,7 @@ return [
     |
     */
 
-    'right_sidebar' => false,
+    'right_sidebar' => true,
     'right_sidebar_icon' => 'fas fa-cogs',
     'right_sidebar_theme' => 'dark',
     'right_sidebar_slide' => true,
@@ -332,7 +332,18 @@ return [
             'route' => 'admin.etiquetas.index',
             'icon' => 'far fa-fw fa-bookmark',
         ],
-       
+        ['header' => 'Opiciones de publicaciones'],
+        [
+            'text' => 'Listado de Publicaciones',
+            'route' => 'admin.posts.index',
+            'icon' => 'fas fa-fw fa-clipboard',
+        ],
+        [
+            'text' => 'Crear Publicacion',
+            'route' => 'admin.posts.create',
+            'icon' => 'fas fa-fw fa-file',
+        ],
+
         [
             'text' => 'multilevel',
             'icon' => 'fas fa-fw fa-share',
@@ -371,7 +382,7 @@ return [
                 ],
             ],
         ],
-        
+
     ],
 
     /*
@@ -526,5 +537,5 @@ return [
     |
     */
 
-    'livewire' => false,
+    'livewire' => true,
 ];

@@ -67,7 +67,7 @@ class EtiquetaController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(Etiqueta $etiqueta)
-    {  
+    {
         $coloresTailwind = [
             'gray' => 'Color gris',
             'red' => 'Color rojo',
@@ -78,7 +78,7 @@ class EtiquetaController extends Controller
             'purple' => 'Color Purpura',
             'pink' => 'Color rosa',
         ];
-        return view('admin.etiquetas.edit', compact('etiqueta','coloresTailwind'));;
+        return view('admin.etiquetas.edit', compact('etiqueta','coloresTailwind'));
     }
 
     /**
@@ -107,6 +107,6 @@ class EtiquetaController extends Controller
     public function destroy(Etiqueta $etiqueta)
     {
         $etiqueta->delete();
-        return redirect()->route('admin.etiquetas.index');
+        return redirect()->route('admin.etiquetas.index')->with('mesagge', 'La Etiqueta se eliminó con exíto');;
     }
 }
