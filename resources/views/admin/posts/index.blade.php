@@ -1,9 +1,11 @@
 @extends('adminlte::page')
-@livewireStyles
-@section('title', 'StockInteligente')
+
+@section('title', 'Listado Publicaciones')
 
 @section('content_header')
-    <h4 class="d-flex justify-content-center mx-auto my-auto">Listado de Publicaciones</h4>
+<a href="{{route('admin.posts.create')}}" class="btn btn-secondary btn-sm float-right">Crear una publicacion</a>
+<h4 class="">Listado de Publicaciones</h4>
+
 @stop
 
 @section('content')
@@ -11,11 +13,12 @@
 @stop
 
 @section('css')
+@livewireStyles
     {{-- Add here extra stylesheets --}}
     {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
 @stop
 
 @section('js')
-    <script> console.log("Hi, I'm using the Laravel-AdminLTE package!"); </script>
+
 @stop
 

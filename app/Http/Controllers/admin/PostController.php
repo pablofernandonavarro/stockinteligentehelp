@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Category;
+use App\Models\Etiqueta;
 
 class PostController extends Controller
 {
@@ -22,8 +24,12 @@ class PostController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-        return view("admin.posts.edit");
+    {  
+        $categories = Category::pluck('name','id');
+        $etiquetas =  Etiqueta::all();
+      
+
+        return view("admin.posts.create",compact('categories','etiquetas'));
     }
 
     /**
