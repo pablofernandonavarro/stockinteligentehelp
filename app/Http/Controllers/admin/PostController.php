@@ -26,6 +26,7 @@ class PostController extends Controller
      */
     public function create()
     {  
+       
         $categories = Category::pluck('name','id');
         $etiquetas =  Etiqueta::all();
       
@@ -37,10 +38,14 @@ class PostController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(StorePostRequest $request)
-
-    {
-        return "las validaciones pasaron";
-        // return view("admin.post.index");
+  {
+    $posts =Post::create($request->all());
+         if($request->etiquetas){
+            $posts->etiquetas()->attach($request->etiquetas);
+         }
+        
+     
+         return view("admin.posts.index");
     }
 
     /**

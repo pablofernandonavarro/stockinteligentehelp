@@ -8,7 +8,9 @@
 
 @section('content')
 <div class="card">
-    {{ html()->form('POST', route('admin.categories.store'))->class('form-horizontal p-3')->autocomplete('off')->open() }}
+    {{ html()->form('POST', route('admin.posts.store'))->class('form-horizontal p-3')->autocomplete('off')->open() }}
+
+    {{ html()->hidden('user_id', auth()->user()->id) }}
 
     <div class="form-group">
         {{ html()->label('Nombre de la Publicación', 'name')->class('form-label') }}
@@ -20,7 +22,8 @@
 
     <div class="form-group">
         {{ html()->label('Slug', 'slug')->class('form-label') }}
-        {{ html()->text('slug')->class('form-control')->placeholder('Slug generado automáticamente') }} {{-- Campo slug con readonly --}}
+        {{ html()->text('slug')->class('form-control')->placeholder('Slug generado automáticamente')->isReadonly() }}
+      
         @error('slug')
         <span class='text-danger'>{{$message}}</span>
         @enderror
@@ -28,7 +31,7 @@
 
     <div class="form-group">
         {{ html()->label('Seleccionar categoria', 'category_id')->class('form-label') }}
-        {{ html()->select('etiqueta_id', $categories)->class('form-control') }}
+        {{ html()->select('category_id', $categories,null)->class('form-control') }}
         @error('category_id')
         <span class='text-danger'>{{$message}}</span>
         @enderror
@@ -38,52 +41,53 @@
         <p class="font-weight-bold">Etiquetas:</p>
         @foreach ($etiquetas as $etiqueta)
         <div class="form-check">
-            {{ html()->checkbox('etiquetas[]', false, $etiqueta->id)->class('form-check-input')->id('etiqueta_'.$etiqueta->id) }}
+            {{ html()->checkbox('etiquetas[]', in_array($etiqueta->id, old('etiquetas', [])), $etiqueta->id)->class('form-check-input')->id('etiqueta_'.$etiqueta->id) }}
             {{ html()->label($etiqueta->name, 'etiqueta_'.$etiqueta->id)->class('form-check-label') }}
         </div>
         @endforeach
-        @error('etiquetas')
+        @error('etiquetas_id')
+        <span class='text-danger'>{{ $message }}</span>
+        @enderror
+    </div>
+
+    <div class="form-group py-3">
+        <p class="font-weight-bold">Estado:</p>
+        <label>
+            {{ html()->radio('status',$checked=true, $value =1)->class('form-control') }}
+            Borrador
+        </label>
+        <label>
+            {{ html()->radio('status',$checked=false, $value =2)->class('form-control') }}
+            Publicado
+        </label>
+        <br>
+        @error('status')
+        <span class='text-danger'>{{$message}}</span>
+        @enderror
+    </div>
+
+    <div class="form-group">
+        {{ html()->label('Extracto:', 'extract')->class('form-label') }}
+        {{ html()->textarea('extract', null)->class('form-control')->id('extract')}}
+        @error('extract')
         <span class='text-danger'>{{$message}}</span>
         @enderror
     </div>
     <div class="form-group">
-        <p class="font-weight-bold">Estado:</p>
-        <label>
-            {{ html()->radio('status', 1,'true')->class('form-control') }}
-            Borrador
-        </label>
-        <label>
-            {{ html()->radio('status', 2,)->class('form-control') }}
-            Publicado
-        </label>
-        @error('status')
-        <span class='text-danger'>{{$message}}</span>
-        @enderror
-
+        {{ html()->label('Cuerpo del la Publicación:', 'body')->class('form-label') }}
+        {{ html()->textarea('body', null)->class('form-control') }}
     </div>
-</div>
-<div class="form-group">
-    {{ html()->label('Extracto:', 'extract')->class('form-label') }}
-    {{ html()->textarea('extract', null)->class('form-control')->id('extract')}}
-    @error('extract')
-        <span class='text-danger'>{{$message}}</span>
-        @enderror
-</div>
-<div class="form-group">
-    {{ html()->label('Cuerpo del la Publicación:', 'body')->class('form-label') }}
-    {{ html()->textarea('body', null)->class('form-control') }}
-</div>
-@error('body')
-        <span class='text-danger'>{{$message}}</span>
-        @enderror
+    @error('body')
+    <span class='text-danger'>{{$message}}</span>
+    @enderror
 
 
 
-<div class="mb-3">
-    {{ html()->submit('Crear Publicación')->class('btn btn-secondary float-right my-2 mx-2') }}
-</div>
+    <div class="mb-3">
+        {{ html()->submit('Crear Publicación')->class('btn btn-secondary float-right my-2 mx-2') }}
+    </div>
 
-{{ html()->form()->close() }}
+    {{ html()->form()->close() }}
 </div>
 @stop
 
@@ -93,6 +97,7 @@
 @stop
 
 @section('js')
+<script src="{{asset('vendor/jQuery-Plugin-stringToSlug-1.3/jquery.stringToSlug.min.js')}}"></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/24.0.0/classic/ckeditor.js"></script>
 <script>
     ClassicEditor
@@ -106,13 +111,13 @@
             console.log(error);
         });
 </script>
-<!-- <script>
-    $(document).ready(function() { // Corrección de "documnet" a "document"
+<script>
+    $(document).ready(function() { 
         $("#name").stringToSlug({
             setEvents: 'keyup keydown blur',
-            getPut: '#slug', // Asegúrate de que esto coincida con el ID del campo slug
+            getPut: '#slug', 
             space: '-'
         });
     });
-</script> -->
+</script>
 @stop
