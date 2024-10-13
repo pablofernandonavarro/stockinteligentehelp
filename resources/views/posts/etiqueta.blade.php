@@ -8,7 +8,7 @@
                 @if ($post->image)
                     <img class="w-full h-72 object-cover object-center" src="{{ Storage::url($post->image->url) }}" alt="{{ $post->name }}">
                 @else
-                    <img class="w-full h-72 object-cover object-center" src="https://images.stockcake.com/public/f/6/c/f6cbc382-a45b-4385-8b56-84cddc4f0e99_large/stock-market-analysis-stockcake.jpg" alt="Imagen predeterminada">
+                    <img class="w-full h-72 object-cover object-center" src="{{asset{{'storage/CoreImages/SinPhoto.jpeg'}}}}" alt="Imagen predeterminada">
                 @endif
                   
                 <div class="px-6 py-4">

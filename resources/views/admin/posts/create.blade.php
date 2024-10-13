@@ -8,7 +8,7 @@
 
 @section('content')
 <div class="card">
-    {{ html()->form('POST', route('admin.posts.store'))->class('form-horizontal p-3')->autocomplete('off')->open() }}
+    {{ html()->form('POST', route('admin.posts.store'))->class('form-horizontal p-3')->autocomplete('off')->attributes(['enctype' => 'multipart/form-data', 'accept' => 'image/*'])->open() }}
 
     {{ html()->hidden('user_id', auth()->user()->id) }}
 
@@ -23,7 +23,7 @@
     <div class="form-group">
         {{ html()->label('Slug', 'slug')->class('form-label') }}
         {{ html()->text('slug')->class('form-control')->placeholder('Slug generado automáticamente')->isReadonly() }}
-      
+
         @error('slug')
         <span class='text-danger'>{{$message}}</span>
         @enderror
@@ -66,34 +66,72 @@
         @enderror
     </div>
 
-    <div class="form-group">
-        {{ html()->label('Extracto:', 'extract')->class('form-label') }}
-        {{ html()->textarea('extract', null)->class('form-control')->id('extract')}}
-        @error('extract')
-        <span class='text-danger'>{{$message}}</span>
-        @enderror
+    <!-- * _______________________________________________      PHOTO ______________________________________________________________________________________ -->
+
+    <div class="row">
+        <div class="col">
+            <div class="image-wrapper">
+                <img src="{{asset('storage\CoreImages\SinPhoto.jpeg')}}" alt="" id="picture">
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+
+
+                {{ html()->label('Imagen que se vera en la Publicación') }}
+                {{ html()->file('file')->class('form-control')}}
+                 <br>
+                <strong> Dimensiones de la Imagen :</strong>
+                <p>Alto : 1024 px</p>
+                <p>ancho : 610 px</p>
+                @error('file')
+                <span class='text-danger'>{{$message}}</span>
+                @enderror
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        {{ html()->label('Cuerpo del la Publicación:', 'body')->class('form-label') }}
-        {{ html()->textarea('body', null)->class('form-control') }}
-    </div>
-    @error('body')
+</div>
+
+<!-- * _______________________________________________      /PHOTO ______________________________________________________________________________________ -->
+<div class="form-group">
+    {{ html()->label('Extracto:', 'extract')->class('form-label') }}
+    {{ html()->textarea('extract', null)->class('form-control')->id('extract')}}
+    @error('extract')
     <span class='text-danger'>{{$message}}</span>
     @enderror
+</div>
+<div class="form-group">
+    {{ html()->label('Cuerpo del la Publicación:', 'body')->class('form-label') }}
+    {{ html()->textarea('body', null)->class('form-control') }}
+</div>
+@error('body')
+<span class='text-danger'>{{$message}}</span>
+@enderror
 
 
 
-    <div class="mb-3">
-        {{ html()->submit('Crear Publicación')->class('btn btn-secondary float-right my-2 mx-2') }}
-    </div>
+<div class="mb-3">
+    {{ html()->submit('Crear Publicación')->class('btn btn-secondary float-right my-2 mx-2') }}
+</div>
 
-    {{ html()->form()->close() }}
+{{ html()->form()->close() }}
 </div>
 @stop
 
 @section('css')
-{{-- Add here extra stylesheets --}}
-{{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
+<style>
+    .image-wrapper {
+        position: relative;
+        padding-bottom: 10%;
+    }
+
+    .imagen-wrapper-img {
+        position: absolute;
+        object-fit: cover;
+        height: 100%;
+    }
+</style>
+
 @stop
 
 @section('js')
@@ -110,12 +148,24 @@
         .catch(error => {
             console.log(error);
         });
+
+    // cambiar imagen
+    document.getElementById("file").addEventListener('change', cambiarImagen);
+
+    function cambiarImagen() {
+        var file = event.target.files[0];
+        var reader = new FileReader();
+        reader.onload = (event) => {
+            document.getElementById("picture").setAttribute('src', event.target.result);
+        }
+        reader.readAsDataURL(file);
+    }
 </script>
 <script>
-    $(document).ready(function() { 
+    $(document).ready(function() {
         $("#name").stringToSlug({
             setEvents: 'keyup keydown blur',
-            getPut: '#slug', 
+            getPut: '#slug',
             space: '-'
         });
     });

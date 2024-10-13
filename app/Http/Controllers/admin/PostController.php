@@ -8,7 +8,7 @@ use App\Models\Post;
 use App\Models\Category;
 use App\Models\Etiqueta;
 use App\Http\Requests\StorePostRequest;
-
+use Illuminate\Support\Facades\Storage;
 class PostController extends Controller
 {
     /**
@@ -24,29 +24,45 @@ class PostController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {  
-       
-        $categories = Category::pluck('name','id');
-        $etiquetas =  Etiqueta::all();
-      
+    public function create(Post $post)
+    {
 
-        return view("admin.posts.create",compact('categories','etiquetas'));
+        $categories = Category::pluck('name', 'id');
+        $etiquetas =  Etiqueta::all();
+
+
+        return view("admin.posts.create", compact('categories', 'etiquetas',"post"));
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(StorePostRequest $request)
-  {
-    $posts =Post::create($request->all());
-         if($request->etiquetas){
-            $posts->etiquetas()->attach($request->etiquetas);
-         }
+    {
         
-     
-         return view("admin.posts.index");
+        $post = Post::create($request->all());
+    
+        // Verificar si se ha subido un archivo
+        if($request->hasFile('file')) {
+      
+            // Subir el archivo a la carpeta 'posts' y obtener la URL
+            $url = Storage::put('posts', $request->file('file'));
+    
+            // Crear la relación de imagen en la tabla correspondiente
+            $post->image()->create([
+                'url' => $url
+            ]);
+        }
+    
+        // Asociar etiquetas si existen en la solicitud
+        if ($request->has('etiquetas')) {
+            $post->etiquetas()->attach($request->etiquetas);
+        }
+    
+        // Redirigir al índice con un mensaje de éxito
+        return redirect()->route('admin.posts.index')->with('success', 'Post creado exitosamente.');
     }
+    
 
     /**
      * Display the specified resource.
@@ -60,16 +76,23 @@ class PostController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(Post $post)
-    {
-        //
+    {  
+        $categories = Category::pluck('name', 'id');
+        $etiquetas =  Etiqueta::all();
+
+
+        return view("admin.posts.edit", compact('categories', 'etiquetas','post'));
+       
     }
+
+    
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, Post $post)
     {
-        //
+       return $request;
     }
 
     /**
