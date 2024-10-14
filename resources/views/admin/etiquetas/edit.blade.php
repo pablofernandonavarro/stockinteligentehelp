@@ -3,7 +3,7 @@
 @section('title', 'StockInteligente')
 
 @section('content_header')
-<h1>Editar Categoria:</h1>
+<h1>Editar Etiqueta:</h1>
 @stop
 
 @section('content')

@@ -5,7 +5,11 @@
 @section('content_header')
 <a href="{{route('admin.posts.create')}}" class="btn btn-secondary btn-sm float-right">Crear una publicacion</a>
 <h4 class="">Listado de Publicaciones</h4>
-
+@if(session('mesagge'))
+<div class="alert alert-success">
+    <strong>{{session('mesagge')}}</strong>
+</div>
+@endif
 @stop
 
 @section('content')

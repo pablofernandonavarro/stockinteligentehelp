@@ -6,9 +6,9 @@
         @foreach ($posts as $post)
             <article class="mb-2 bg-white shadow-lg rounded-lg overflow-hidden">
                 @if ($post->image)
-                    <img class="w-full h-72 object-cover object-center" src="{{ Storage::url($post->image->url) }}" alt="{{ $post->name }}">
+                    <img class="w-full h-72 object-cover object-center" src="{{ Storage::url($post->image->url) }}" alt="">
                 @else
-                    <img class="w-full h-72 object-cover object-center" src="{{asset{{'storage/CoreImages/SinPhoto.jpeg'}}}}" alt="Imagen predeterminada">
+                    <img class="w-full h-72 object-cover object-center" src="{{asset('storage/CoreImages/SinPhoto.jpeg')}}" alt="Imagen predeterminada">
                 @endif
                   
                 <div class="px-6 py-4">
@@ -23,7 +23,7 @@
                 <div class="px-6 py-3">
                     @foreach ($post->etiquetas as $etiqueta)
                         <a href="{{ route('posts.etiqueta', $etiqueta) }}" class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm text-gray-700 mr-3">
-                            {{ $etiqueta->name }}
+                            {!! $etiqueta->name !!}
                         </a>
                     @endforeach
                 </div>

@@ -9,6 +9,8 @@ use App\Models\Category;
 use App\Models\Etiqueta;
 use App\Http\Requests\StorePostRequest;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\PostRequest;
+
 class PostController extends Controller
 {
     /**
@@ -31,7 +33,7 @@ class PostController extends Controller
         $etiquetas =  Etiqueta::all();
 
 
-        return view("admin.posts.create", compact('categories', 'etiquetas',"post"));
+        return view("admin.posts.create", compact('categories', 'etiquetas', "post"));
     }
 
     /**
@@ -39,67 +41,89 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        
+
         $post = Post::create($request->all());
-    
-        // Verificar si se ha subido un archivo
-        if($request->hasFile('file')) {
-      
-            // Subir el archivo a la carpeta 'posts' y obtener la URL
+        if ($request->hasFile('file')) {
             $url = Storage::put('posts', $request->file('file'));
-    
-            // Crear la relación de imagen en la tabla correspondiente
             $post->image()->create([
                 'url' => $url
             ]);
         }
-    
-        // Asociar etiquetas si existen en la solicitud
+
         if ($request->has('etiquetas')) {
             $post->etiquetas()->attach($request->etiquetas);
         }
-    
-        // Redirigir al índice con un mensaje de éxito
-        return redirect()->route('admin.posts.index')->with('success', 'Post creado exitosamente.');
+
+        return redirect()->route('admin.posts.index')->with('message', 'Post creado exitosamente.');
     }
-    
+
 
     /**
      * Display the specified resource.
      */
     public function show(Post $post)
-    {
-        //
+    {   
+
+        $categories = $post->categories;
+        $etiquetas =  $post->etiquetas;
+
+        return view("admin.posts.show",compact ('categories','etiquetas','post'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(Post $post)
-    {  
+    {
         $categories = Category::pluck('name', 'id');
         $etiquetas =  Etiqueta::all();
 
 
-        return view("admin.posts.edit", compact('categories', 'etiquetas','post'));
-       
+        return view("admin.posts.edit", compact('categories', 'etiquetas', 'post'))->with('mesagge', 'Post actualizado exitosamente!!!!.');
     }
 
-    
+
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Post $post)
+    public function update(PostRequest $request, Post $post)
     {
-       return $request;
+
+        $post->update($request->all());
+        if ($request->hasFile('file')) {
+            $url = Storage::put('posts', $request->file('file'));
+            if ($post->image) {
+                Storage::delete($post->image->url);
+
+                $post->image->update([
+                    'url' => $url
+                ]);
+            } else {
+                $post->image()->create([
+                    'url' => $url
+                ]);
+            }
+        }
+
+        if ($request->has('etiquetas')) {
+            $post->etiquetas()->sync($request->etiquetas);
+        }
+
+        return redirect()->route('admin.posts.index')->with('mesagge', 'Post actualizado exitosamente!!!!.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(Post $post)
     {
-        //
+        
+        if ($post->image) {
+            Storage::delete($post->image->url);
+            $post->image->delete();
+        }
+        $post->etiquetas()->detach();
+        $post->delete();
+    
+        return redirect()->route('admin.posts.index')->with('mesagge', 'Post eliminado exitosamente!!!!!.');
     }
 }

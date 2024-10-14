@@ -15,7 +15,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
-        return view('admin.categories.index', compact('categories'))->with('mesagge', 'La Categoría se actualizó con exíto');
+        return view('admin.categories.index', compact('categories'))->with('message', 'La Categoría se actualizó con exíto');
     }
 
     /**
@@ -42,7 +42,7 @@ class CategoryController extends Controller
             'slug' => $validatedData['name'],
         ]);
 
-        return redirect()->route('admin.categories.index', compact('category'))->with('mesagge', 'La Categoría se creo con exíto');;
+        return redirect()->route('admin.categories.index', compact('category'))->with('message', 'La Categoría se creo con exíto');;
     }
 
     /**
@@ -50,7 +50,7 @@ class CategoryController extends Controller
      */
     public function show(Category  $category)
     {
-        return view('admin.categories.show', compact('category'))->with('mesagge', 'La Categoría se actualizó con exíto');
+        return view('admin.categories.show', compact('category'))->with('message', 'La Categoría se actualizó con exíto');
     }
 
     /**
@@ -78,7 +78,7 @@ class CategoryController extends Controller
         ]);
 
         return redirect()->route('admin.categories.index', compact('category'))
-            ->with('mesagge', 'La Categoría se actualizó con exíto');
+            ->with('message', 'La Categoría se actualizó con exíto');
     }
 
     /**
@@ -88,6 +88,6 @@ class CategoryController extends Controller
     {
         $category->delete();
 
-        return redirect()->route('admin.categories.index')->with('mesagge', 'La Categoría se eliminó con exíto');
+        return redirect()->route('admin.categories.index')->with('message', 'La Categoría se eliminó con exíto');
     }
 }

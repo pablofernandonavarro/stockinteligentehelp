@@ -4,18 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StorePostRequest extends FormRequest
+class PostRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
-    { 
-        if($this->user_id==auth()->user()->id){
+    {
         return true;
-       }else{
-        return false;
-       }
     }
 
     /**
@@ -23,11 +19,12 @@ class StorePostRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function rules()
+    public function rules(): array
     {
+        $post = $this->route()->parameter('post');
         $rules = [
             'name' => 'required|string|max:180',
-            'slug' => 'required|unique:posts',
+            'slug' => 'required|unique:posts,slug,' . $post->id,
             'status' => 'required|in:1,2',
             'file'   => 'image'
         ];
@@ -41,6 +38,5 @@ class StorePostRequest extends FormRequest
         }
       
         return $rules;
-        
     }
 }

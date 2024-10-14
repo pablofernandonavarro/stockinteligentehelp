@@ -13,7 +13,7 @@
                         <a href="{{ route('posts.show', $post) }}">{{ $post->name }}</a>
                     </h1>
                     <div class="text-gray-700 text-base">
-                        {{ $post->extract }}
+                        {!! $post->extract !!}
                     </div>
                 </div>
 
