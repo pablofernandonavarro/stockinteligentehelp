@@ -19,7 +19,7 @@
 
                 <div class="py-3">
                     @foreach ($post->etiquetas as $etiqueta)
-                        <a href="{{route('posts.etiqueta',$etiqueta)}}" class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm text-gray-700 mr-3">{{ $etiqueta->name }}</a>
+                        <a href="{{route('posts.etiqueta',$etiqueta)}}" class="inline-block  rounded-full px-3 py-1 text-sm text-black mr-3"  style="background-color: {{ $etiqueta->color }};">{{ $etiqueta->name }}</a>
                     @endforeach
                 </div>
 

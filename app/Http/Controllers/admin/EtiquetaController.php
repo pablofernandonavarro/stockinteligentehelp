@@ -86,6 +86,8 @@ class EtiquetaController extends Controller
      */
     public function update(Request $request,  Etiqueta $etiqueta)
     {
+       
+
         $validatedData = $request->validate([
             'name' => 'required',
             'color' => 'required'

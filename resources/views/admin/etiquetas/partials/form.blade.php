@@ -8,13 +8,16 @@
 
     {{-- Select simple para el color --}}
     {{ html()->label('Seleccionar color', 'color')->class('form-label') }}
-    <select name="color" id="color" class="form-control">
+    <input type="color" class="form-control" name="color" value="{{ old('color', $etiqueta->color ?? '#ffffff') }}">  
+      
+     <!-- <select name="color" id="color" class="form-control">
+
         @foreach($coloresTailwind as $key => $color)
             <option value="{{ $key }}" {{ old('color', $etiqueta->color) == $key ? 'selected' : '' }}>
                 {{ $color }}
             </option>
         @endforeach
-    </select>
+    </select>  -->
 
     {{-- Mostrar mensajes de error --}}
     @error('name')

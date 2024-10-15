@@ -6,7 +6,7 @@
                 <div class="px-8 py-4 flex flex-col justify-center flex-grow">
                     <div class="mb-2">
                         @foreach ($post->etiquetas as $etiqueta)
-                        <a href="{{ route('posts.etiqueta', $etiqueta) }}" class="inline-block px-3 h-6 bg-{{ $etiqueta->color }}-600 text-white rounded-full">
+                        <a href="{{ route('posts.etiqueta', $etiqueta) }}" class="inline-block px-3 h-6  text-white rounded-full " style="background-color: {{ $etiqueta->color }}";>
                             {{ $etiqueta->name }}
                         </a>
                         @endforeach
