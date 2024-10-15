@@ -17,8 +17,8 @@ class UserSeeder extends Seeder
             'name' => 'Pablo Fernando Navarro',
             'email' => 'pablofernandonavarro@gmail.com',
             'password' => bcrypt('12345678')
-        ]);
+        ])->assignRole('Admin');
 
-        User::factory(99)->create();
+        User::factory(9)->create();
     }
 }
