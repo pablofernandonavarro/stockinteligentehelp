@@ -10,6 +10,7 @@ use App\Models\Etiqueta;
 use App\Http\Requests\StorePostRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\PostRequest;
+use Illuminate\Support\Facades\Cache;
 
 class PostController extends Controller
 {
@@ -50,6 +51,8 @@ class PostController extends Controller
             ]);
         }
 
+        Cache::flush();
+
         if ($request->has('etiquetas')) {
             $post->etiquetas()->attach($request->etiquetas);
         }
@@ -62,12 +65,12 @@ class PostController extends Controller
      * Display the specified resource.
      */
     public function show(Post $post)
-    {   
+    {
 
         $categories = $post->categories;
         $etiquetas =  $post->etiquetas;
 
-        return view("admin.posts.show",compact ('categories','etiquetas','post'));
+        return view("admin.posts.show", compact('categories', 'etiquetas', 'post'));
     }
 
     /**
@@ -79,7 +82,7 @@ class PostController extends Controller
         $etiquetas =  Etiqueta::all();
 
 
-        return view("admin.posts.edit", compact('categories', 'etiquetas', 'post'))->with('mesagge', 'Post actualizado exitosamente!!!!.');
+        return view("admin.posts.edit", compact('categories', 'etiquetas', 'post'))->with('message', 'Post actualizado exitosamente!!!!.');
     }
 
 
@@ -109,21 +112,22 @@ class PostController extends Controller
         if ($request->has('etiquetas')) {
             $post->etiquetas()->sync($request->etiquetas);
         }
-
-        return redirect()->route('admin.posts.index')->with('mesagge', 'Post actualizado exitosamente!!!!.');
+        Cache::flush();
+        return redirect()->route('admin.posts.index')->with('message', 'Post actualizado exitosamente!!!!.');
     }
 
 
     public function destroy(Post $post)
     {
-        
+
         if ($post->image) {
             Storage::delete($post->image->url);
             $post->image->delete();
         }
         $post->etiquetas()->detach();
         $post->delete();
-    
-        return redirect()->route('admin.posts.index')->with('mesagge', 'Post eliminado exitosamente!!!!!.');
+        Cache::flush();
+
+        return redirect()->route('admin.posts.index')->with('message', 'Post eliminado exitosamente!!!!!.');
     }
 }

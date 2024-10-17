@@ -315,19 +315,22 @@ return [
             'url' => 'admin/blog',
             'can' => 'manage-blog',
         ],
+      
         [
-            'text' => 'Panel Administrativo',
-            'url' => 'admin/',
-            'icon' => 'fas fa-fw fa-tachometer-alt',
-
-        ],
-        [
-            'text' => 'usuarios',
+            'text' => 'Usuarios',
             'route' => 'admin.users.index',
             'icon' => 'fas fa-users fa-fw',
+           
 
         ],
-        ['header' => 'Administrador'],
+        [
+            'text' => 'Roles',
+            'route' => 'admin.roles.index',
+            'icon' => 'fas fa-users-cog fa-fw',
+           
+
+        ],
+      
         [
             'text' => 'Categorias',
             'route' => 'admin.categories.index',
