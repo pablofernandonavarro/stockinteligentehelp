@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Stock Inteligente'),
+    'name' => env('APP_NAME', 'StockInteligente'),
 
     /*
     |--------------------------------------------------------------------------
@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'env' => env('APP_ENV', 'production'),
+    'env' => env('APP_ENV', 'Stock Inteligente'),
 
     /*
     |--------------------------------------------------------------------------

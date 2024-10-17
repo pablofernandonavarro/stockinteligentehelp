@@ -56,6 +56,15 @@
         <div x-show="openMenu" class="w-full md:hidden mt-4">
             <ul class="flex flex-col space-y-2 font-medium p-4 border border-gray-100 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
                 @foreach($categories as $category)
+                @if($category->name == "Stock_interna")
+                @role('Admin')
+                <li>
+                    <a href="{{route('posts.category',$category)}}" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white">
+                        {{$category->name}}
+                    </a>
+                </li>
+                @endrole
+                @endif
                 <li>
                     <a href="{{route('posts.category',$category)}}" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white">
                         {{$category->name}}
