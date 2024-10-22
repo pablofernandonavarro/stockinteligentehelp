@@ -16,19 +16,29 @@ class UserController extends Controller
         return view('admin.users.index');
     }
 
- 
-    public function edit(User $user )
+
+    public function edit(User $user)
     {
         $roles = Role::all();
-        return view('admin.users.edit',compact('user','roles'));
+        return view('admin.users.edit', compact('user', 'roles'));
     }
 
- 
+
     public function update(Request $request, User $user)
-    {   
-       
+    {
+
         $user->roles()->sync($request->roles);
-        return redirect()->route('admin.users.edit',$user)->with('message','Se asigno los roles coreectamente');
+        return redirect()->route('admin.users.edit', $user)->with('message', 'Se asigno los roles coreectamente');
+    }
+
+    public function destroy(User $user)
+    {
+
+        $user->roles()->detach();
+        $user->permissions()->detach();
+        $user->delete();
+        return redirect()->route('admin.users.index')
+            ->with('message', 'Se eliminio el Usuario Corectamente');
     }
 
 }
