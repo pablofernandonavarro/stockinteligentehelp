@@ -4,7 +4,7 @@
             @foreach ($posts as $post)
                 @php
                     // Obtenemos las categorías del post
-                    $categories = $post->categories->pluck('name');
+                    $categories = $post->category->pluck('name');
                 @endphp
 
                 {{-- Si es admin, mostramos todos los posts, incluyendo "Stock_interna" --}}
