@@ -4,7 +4,7 @@
             @foreach ($posts as $post)
                 @php
                     // Obtener los nombres de las categorías del post
-                    $categories = $post->category->pluck('name');
+                    $categories = $post->categories->pluck('name');
                 @endphp
 
                 @if (auth()->check())
@@ -38,7 +38,7 @@
                                             <a href="{{ route('posts.etiqueta', $etiqueta) }}" class="inline-block px-3 h-6 text-white rounded-full" style="background-color: {{ $etiqueta->color }};">
                                                 {{ $etiqueta->name }}
                                             </a>
-                                        @endforeach
+                                        </foreach>
                                     </div>
 
                                     <h1 class="text-2xl md:text-3xl lg:text-4xl text-white leading-8 font-bold">
