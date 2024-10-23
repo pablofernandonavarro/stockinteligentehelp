@@ -5,7 +5,9 @@
         @foreach ($posts as $post)
         <article class="mb-2 bg-white shadow-lg rounded-lg overflow-hidden">
             <!-- Ajusta la imagen para que se vea bien -->
-            <img class="w-full h-auto object-contain object-center" src="{{ Storage::url($post->image->url) }}" alt="{{ $post->name }}">
+            <img class="w-full h-auto object-contain object-center" 
+                src="{{ $post->image ? Storage::url($post->image->url) : asset('storage\CoreImages\SinPhoto.jpeg') }}" 
+                alt="{{ $post->name }}">
             <div class="px-6 py-4">
                 <h1 class="font-bold text-xl mb-2">
                     <a href="{{ route('posts.show', $post) }}">{{ $post->name }}</a>
