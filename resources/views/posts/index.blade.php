@@ -4,7 +4,7 @@
             @foreach ($posts as $post)
                 @php
                     // Obtenemos las categorías del post
-                    $categories = $post->category->pluck('name');
+                    $categories = $post->categories->pluck('name');
                 @endphp
 
                 {{-- Si el usuario está autenticado --}}
