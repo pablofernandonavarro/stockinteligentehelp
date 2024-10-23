@@ -25,7 +25,7 @@ class PostController extends Controller
             $posts = Cache::get($key); // Aquí corregimos $post por $posts
         } else {
             // Asegúrate de cargar la relación 'categories'
-            $posts = Post::with('categories')->where('status', 2)->latest('id')->paginate(8);
+            $posts = Post::with('category')->where('status', 2)->latest('id')->paginate(8);
             Cache::put($key, $posts);
         }
     
