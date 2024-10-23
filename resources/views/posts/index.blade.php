@@ -3,14 +3,14 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach ($posts as $post)
                 @php
-                    // Obtenemos las categorías del post
+                    // Obtener los nombres de las categorías del post
                     $categories = $post->category->pluck('name');
                 @endphp
 
-                {{-- Si el usuario está autenticado --}}
-                @auth
-                    {{-- Si es admin, mostramos todos los posts, incluyendo "Stock_interna" --}}
-                    @role('Admin')
+                @if (auth()->check())
+                    {{-- Usuario autenticado --}}
+                    @if (auth()->user()->hasRole('Admin'))
+                        {{-- Si es admin, muestra todos los posts --}}
                         <article class="w-full h-80 bg-gray-600 @if($loop->first) md:col-span-2 h-96 @endif rounded-lg overflow-hidden shadow-md flex flex-col justify-between">
                             <div class="px-8 py-4 flex flex-col justify-center flex-grow">
                                 <div class="mb-2">
@@ -29,8 +29,8 @@
                             </div>
                         </article>
                     @else
-                        {{-- Si no es admin, solo mostramos los posts que no tienen la categoría "Stock_interna" --}}
-                        @if(!$categories->contains('Stock_interna'))
+                        {{-- Usuario autenticado no admin --}}
+                        @if (!$categories->contains('Stock_interna'))
                             <article class="w-full h-80 bg-gray-600 @if($loop->first) md:col-span-2 h-96 @endif rounded-lg overflow-hidden shadow-md flex flex-col justify-between">
                                 <div class="px-8 py-4 flex flex-col justify-center flex-grow">
                                     <div class="mb-2">
@@ -49,10 +49,10 @@
                                 </div>
                             </article>
                         @endif
-                    @endrole
+                    @endif
                 @else
-                    {{-- Si el usuario no está autenticado, mostrar todos los posts excepto los de la categoría "Stock_interna" --}}
-                    @if(!$categories->contains('Stock_interna'))
+                    {{-- Usuario no autenticado --}}
+                    @if (!$categories->contains('Stock_interna'))
                         <article class="w-full h-80 bg-gray-600 @if($loop->first) md:col-span-2 h-96 @endif rounded-lg overflow-hidden shadow-md flex flex-col justify-between">
                             <div class="px-8 py-4 flex flex-col justify-center flex-grow">
                                 <div class="mb-2">
@@ -71,7 +71,7 @@
                             </div>
                         </article>
                     @endif
-                @endauth
+                @endif
             @endforeach
         </div>
 
