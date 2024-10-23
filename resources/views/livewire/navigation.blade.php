@@ -4,8 +4,8 @@
         <div class="flex items-center justify-between flex-wrap">
             <!-- Logo -->
             <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
-                <img src="{{Storage::url('CoreImages/logo_SI.jpeg')}}" class="h-12" alt="Logo" />
-                <span class="self-center text-1xl font-semibold whitespace-nowrap dark:text-white">Stock Inteligente</span>
+                <img src="{{Storage::url('CoreImages/logo_SI.jpeg')}}" class="h-12 md:h-12 sm:h-8" alt="Logo" />
+                <span class="self-center text-xl md:text-1xl font-semibold whitespace-nowrap dark:text-white">Stock Inteligente</span>
             </a>
 
             <!-- Botón de usuario y menú hamburguesa -->
