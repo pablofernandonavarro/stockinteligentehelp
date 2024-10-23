@@ -1,11 +1,11 @@
 <x-app-layout>
     <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-8 ">
-        <h1 class="uppercase text-center text-3xl font-bold mb-2">Categoría: {{ $category->name }}</h1>
+        <h1 class="uppercase text-center text-3xl font-bold mb-4">Categoría: {{ $category->name }}</h1>
 
         <!-- Grid container -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             @foreach ($posts as $post)
-            <article class="bg-white shadow-lg rounded-lg overflow-hidden">
+            <article class="bg-white shadow-lg rounded-lg overflow-hidden shadow-xl">
                 <!-- Ajusta la imagen para que se vea bien -->
                 <img class="w-full h-auto object-contain object-center" 
                     src="{{ $post->image ? Storage::url($post->image->url) : asset('storage/CoreImages/SinPhoto.jpeg') }}" 
