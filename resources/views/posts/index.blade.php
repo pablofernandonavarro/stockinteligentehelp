@@ -4,7 +4,7 @@
             @foreach ($posts as $post)
                 @php
                     // Obtener los nombres de las categorías del post
-                    $categories = $post->categories->pluck('name');
+                    $categories = $post->category->pluck('name');
                 @endphp
 
                 @if (auth()->check())
