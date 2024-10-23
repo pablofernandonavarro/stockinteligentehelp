@@ -4,7 +4,7 @@
             @foreach ($posts as $post)
                 {{-- Verificar si el post pertenece a la categoría "Stock_interna" --}}
                 @if($post->categories)
-                    @if(!$post->categories->pluck('name')->contains('Stock_interna') || auth()->user()->hasRole('Admin'))
+                    @if(!$post->category->pluck('name')->contains('Stock_interna') || auth()->user()->hasRole('Admin'))
                         <article class="w-full h-80 bg-gray-600 @if($loop->first) md:col-span-2 h-96 @endif rounded-lg overflow-hidden shadow-md flex flex-col justify-between">
                             <div class="px-8 py-4 flex flex-col justify-center flex-grow">
                                 <div class="mb-2">
