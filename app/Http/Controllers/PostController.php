@@ -15,29 +15,23 @@ class PostController extends Controller
 
     public function index()
     {  
-           
-        if (request()->page){
-            $key = 'posts'. request()->page;
-        }else{
+        if (request()->page) {
+            $key = 'posts' . request()->page;
+        } else {
             $key = 'posts';
-        }  
-        
-
-
-
-          if(Cache::has('post')){
-              $post= Cache::get($key);
-          }else{
-            $posts = Post::where('status', 2)->latest('id')->paginate(8);
-            Cache::put($key,$posts);
-          }
-
-
-
-
-        
+        }
+    
+        if (Cache::has($key)) {
+            $posts = Cache::get($key); // Aquí corregimos $post por $posts
+        } else {
+            // Asegúrate de cargar la relación 'categories'
+            $posts = Post::with('categories')->where('status', 2)->latest('id')->paginate(8);
+            Cache::put($key, $posts);
+        }
+    
         return view('posts.index', compact('posts'));
     }
+    
     public function show(Post $post)
     {
 
