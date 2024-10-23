@@ -38,7 +38,7 @@
                                             <a href="{{ route('posts.etiqueta', $etiqueta) }}" class="inline-block px-3 h-6 text-white rounded-full" style="background-color: {{ $etiqueta->color }};">
                                                 {{ $etiqueta->name }}
                                             </a>
-                                        </foreach>
+                                        @endforeach
                                     </div>
 
                                     <h1 class="text-2xl md:text-3xl lg:text-4xl text-white leading-8 font-bold">
