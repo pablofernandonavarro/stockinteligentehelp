@@ -10,7 +10,7 @@ use App\Http\Controllers\Admin\RoleController;
 
 Route::get('',[HomeController::class,'index'])->name('admin.home');
 
-Route::resource('users',UserController::class)->names('admin.users');
+Route::resource('users',UserController::class)->names('admin.users')->except(['show']);;
 
 Route::resource('roles',RoleController::class)->names('admin.roles');
 
