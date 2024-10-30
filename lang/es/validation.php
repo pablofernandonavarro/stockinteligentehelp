@@ -154,5 +154,10 @@ return [
         'name' => 'nombre',
         'extract' => 'extracto',
         'body' => 'cuerpo de la publicación',
+        'question'=>'pregunta',
+        'answer'=>'respuesta',
+        'category_id'=>'categoría',
+        'is_active'=>'esta activo',
+        'priority'=>'prioridad'
     ],
 ];

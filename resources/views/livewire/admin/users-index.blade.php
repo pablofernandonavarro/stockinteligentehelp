@@ -19,7 +19,7 @@
                             <th>id</th>
                             <th>Nombre</th>
                             <th>Email</th>
-                            <th>Accion</th>
+                            <th colspan="2">Accion</th>
                         </tr>
                     </thead>
                     <tbody>

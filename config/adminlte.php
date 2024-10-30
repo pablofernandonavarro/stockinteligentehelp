@@ -315,22 +315,22 @@ return [
             'url' => 'admin/blog',
             'can' => 'manage-blog',
         ],
-      
+
         [
             'text' => 'Usuarios',
             'route' => 'admin.users.index',
             'icon' => 'fas fa-users fa-fw',
-           
+
 
         ],
         [
             'text' => 'Roles',
             'route' => 'admin.roles.index',
             'icon' => 'fas fa-users-cog fa-fw',
-           
+
 
         ],
-      
+
         [
             'text' => 'Categorias',
             'route' => 'admin.categories.index',
@@ -340,6 +340,17 @@ return [
             'text' => 'Etiquetas',
             'route' => 'admin.etiquetas.index',
             'icon' => 'far fa-fw fa-bookmark',
+        ],
+        ['header' => 'Opiciones de Faq'],
+        [
+            'text' => 'Listado de Faq',
+            'route' => 'admin.faqs.search',
+            'icon' => 'fas fa-fw fa-clipboard',
+        ],
+        [
+            'text' => 'Administacion Faq',
+            'route' => 'admin.faqs.index',
+            'icon' => 'fas fa-fw fa-file',
         ],
         ['header' => 'Opiciones de publicaciones'],
         [
