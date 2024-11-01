@@ -8,12 +8,16 @@ use Illuminate\Http\Request;
 
 class FaqController extends Controller
 {
-    public function index(){
-        $faqs = Faq::where('is_active',1)->get();
+    public function index()
+    {
+        $faqs = Faq::where('is_active', 1)->get();
 
-        return View('faqs.index',compact('faqs'));
+        return View('faqs.index', compact('faqs'));
     }
+    public function formfaqs()
+    {
+        return view('faqs.formfaqs');
 
 
-
+    }
 }
