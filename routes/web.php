@@ -3,7 +3,9 @@
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FaqController;
-
+use App\Mail\faqmail;
+use Illuminate\Mail\Mailer;
+use Illuminate\Support\Facades\Mail;
 
 Route::middleware([
     'auth:sanctum',
@@ -27,4 +29,8 @@ Route::get('category/{category}',[PostController::class,'category'])->name('post
 Route::get('etiqueta/{etiqueta}',[PostController::class,'etiqueta'])->name('posts.etiqueta');
 Route::get('/faqs',[FaqController::class,'index'])->name('faqs');
 Route::get('/faqs/formfaqs',[FaqController::class,'formfaqs'])->name('faqs.formfaqs');
+Route::get('contactanos',function(){
+
+   Mail::to('pablofernandonavarro@gmail.com')->send(new  faqmail);
+});
 

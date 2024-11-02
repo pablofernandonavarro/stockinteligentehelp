@@ -5,6 +5,7 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
@@ -18,7 +19,7 @@ class faqmail extends Mailable
      */
     public function __construct()
     {
-        $this->nombre="usuario uno";
+
     }
 
     /**
@@ -28,7 +29,8 @@ class faqmail extends Mailable
     {
 
         return new Envelope(
-            subject: 'Faqmail'. $this->nombre
+
+            subject: 'informacion de conatcto'
         );
     }
 
@@ -38,7 +40,7 @@ class faqmail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'email.faq',
+            view: 'emails.faq-mail',
         );
     }
 
