@@ -6,7 +6,7 @@
                 @if(auth()->check())
                     @if(auth()->user()->hasRole('Admin'))
                         {{-- Si es Admin, muestra todos los posts --}}
-                        <article class="w-full h-80 bg-gray-600 rounded-lg overflow-hidden shadow-md flex flex-col justify-between">
+                        <article class="w-full h-80 bg-gray-800 text-gray-100 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 flex flex-col justify-between">
                             <div class="px-8 py-4 flex flex-col justify-center flex-grow">
                                 <div class="mb-2">
                                     @foreach ($post->etiquetas as $etiqueta)
@@ -16,7 +16,7 @@
                                     @endforeach
                                 </div>
 
-                                <h1 class="text-2xl md:text-3xl lg:text-4xl text-white leading-8 font-bold">
+                                <h1 class="text-2xl md:text-3xl lg:text-4xl text-gray-100 leading-8 font-bold">
                                     <a href="{{ route('posts.show', $post) }}">
                                         {{ $post->name }}
                                     </a>
@@ -26,7 +26,7 @@
                     @else
                         {{-- Si no es Admin, oculta los posts de la categoría "Stock_interna" --}}
                         @if($post->category->name != 'Stock_interna')
-                            <article class="w-full h-80 bg-gray-600 rounded-lg overflow-hidden shadow-md flex flex-col justify-between">
+                            <article class="w-full h-80 bg-gray-800 text-gray-100 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 flex flex-col justify-between">
                                 <div class="px-8 py-4 flex flex-col justify-center flex-grow">
                                     <div class="mb-2">
                                         @foreach ($post->etiquetas as $etiqueta)
@@ -36,7 +36,7 @@
                                         @endforeach
                                     </div>
 
-                                    <h1 class="text-2xl md:text-3xl lg:text-4xl text-white leading-8 font-bold">
+                                    <h1 class="text-2xl md:text-3xl lg:text-4xl text-gray-100 leading-8 font-bold">
                                         <a href="{{ route('posts.show', $post) }}">
                                             {{ $post->name }}
                                         </a>
@@ -48,7 +48,7 @@
                 @else
                     {{-- Usuarios no autenticados: Oculta los posts de la categoría "Stock_interna" --}}
                     @if($post->category->name != 'Stock_interna')
-                        <article class="w-full h-80 bg-gray-600 rounded-lg overflow-hidden shadow-md flex flex-col justify-between">
+                        <article class="w-full h-80 bg-gray-800 text-gray-100 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 flex flex-col justify-between">
                             <div class="px-8 py-4 flex flex-col justify-center flex-grow">
                                 <div class="mb-2">
                                     @foreach ($post->etiquetas as $etiqueta)
@@ -58,7 +58,7 @@
                                     @endforeach
                                 </div>
 
-                                <h1 class="text-2xl md:text-3xl lg:text-4xl text-white leading-8 font-bold">
+                                <h1 class="text-2xl md:text-3xl lg:text-4xl text-gray-100 leading-8 font-bold">
                                     <a href="{{ route('posts.show', $post) }}">
                                         {{ $post->name }}
                                     </a>
