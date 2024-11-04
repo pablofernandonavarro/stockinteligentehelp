@@ -14,6 +14,7 @@ class Faq extends Model
         'category_id',
         'is_active',
         'priority',
+        'created_by',
     ];
     public function category()
     {
