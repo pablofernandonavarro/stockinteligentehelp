@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Faq;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -14,12 +15,16 @@ class faqmail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $faq; // Esta propiedad contendrá la información del FAQ
+
     /**
      * Create a new message instance.
+     *
+     * @param Faq $faq
      */
-    public function __construct()
+    public function __construct(Faq $faq)
     {
-
+        $this->faq = $faq;
     }
 
     /**
@@ -27,10 +32,8 @@ class faqmail extends Mailable
      */
     public function envelope(): Envelope
     {
-
         return new Envelope(
-
-            subject: 'informacion de conatcto'
+            subject: 'Información de contacto - Nueva Pregunta Frecuente'
         );
     }
 
@@ -40,7 +43,7 @@ class faqmail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.faq-mail',
+            view: 'emails.faq-mail', // Asegúrate de que esta vista existe
         );
     }
 
@@ -51,6 +54,6 @@ class faqmail extends Mailable
      */
     public function attachments(): array
     {
-        return [];
+        return []; // Si necesitas adjuntar archivos, puedes hacerlo aquí
     }
 }

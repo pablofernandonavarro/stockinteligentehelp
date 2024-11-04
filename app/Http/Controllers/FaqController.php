@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ContactRequest;
 use App\Models\Faq;
+use App\Mail\faqmail;
 use Illuminate\Foundation\Console\ViewMakeCommand;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Mail;
 
 class FaqController extends Controller
 {
@@ -29,7 +30,7 @@ class FaqController extends Controller
        
         $createdBy = auth()->check() ? auth()->user()->id : null;
         
-        Faq::create([
+       $faq = Faq::create([
             'question'    => $request->input('question'),
             'answer'      => ' ',           
             'category_id' => 1,             
@@ -37,7 +38,8 @@ class FaqController extends Controller
             'priority'    => 0,
             'created_by' => $createdBy,                
         ]);
-    
-        return redirect()->route('posts.index')->with('message', 'Pregunta Frecuente creada exitosamente.');
+        Mail::to('pablofernandonavarro@gmail.com')->send(new faqmail($faq)); 
+
+        return redirect()->route('posts.index')->with('message', 'Pregunta Frecuente enviada exitosamente.');
     }
 }
