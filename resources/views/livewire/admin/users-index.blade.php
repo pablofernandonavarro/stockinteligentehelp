@@ -19,6 +19,7 @@
                             <th>id</th>
                             <th>Nombre</th>
                             <th>Email</th>
+                            <th>Rol</th>
                             <th colspan="2">Accion</th>
                         </tr>
                     </thead>
@@ -28,6 +29,7 @@
                             <td>{{$user->id}}</td>
                             <td>{{$user->name}}</td>
                             <td>{{$user->email}}</td>
+                            <td>{{$user->getRoleNames() ?:}}</td>
                             <td with="10px">
                                 <a href="{{route('admin.users.edit',$user)}}" class="btn btn-primary btn-sm">Editar</a>
                             </td>
