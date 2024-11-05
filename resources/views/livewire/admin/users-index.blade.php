@@ -29,7 +29,7 @@
                             <td>{{$user->id}}</td>
                             <td>{{$user->name}}</td>
                             <td>{{$user->email}}</td>
-                            <td>{{$user->getRoleNames() ?:}}</td>
+                            <td>{{$user->getRoleNames()}}</td>
                             <td with="10px">
                                 <a href="{{route('admin.users.edit',$user)}}" class="btn btn-primary btn-sm">Editar</a>
                             </td>
