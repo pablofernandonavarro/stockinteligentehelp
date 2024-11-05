@@ -40,6 +40,6 @@ class FaqController extends Controller
         ]);
         Mail::to('pablo@stockintegligente.com')->send(new faqmail($faq));
 
-        return redirect()->route('posts.index')->with('message', 'Pregunta Frecuente enviada exitosamente.');
+        return redirect()->route('posts.index')->with('message', 'la consulta enviada exitosamente.');
     }
 }
