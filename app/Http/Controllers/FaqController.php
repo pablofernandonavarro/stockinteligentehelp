@@ -26,19 +26,19 @@ class FaqController extends Controller
     }
 
     public function process(ContactRequest $request)
-    {   
-       
+    {
+
         $createdBy = auth()->check() ? auth()->user()->id : null;
-        
+
        $faq = Faq::create([
             'question'    => $request->input('question'),
-            'answer'      => ' ',           
-            'category_id' => 1,             
-            'is_active'   => false,          
+            'answer'      => ' ',
+            'category_id' => 1,
+            'is_active'   => false,
             'priority'    => 0,
-            'created_by' => $createdBy,                
+            'created_by' => $createdBy,
         ]);
-        Mail::to('pablofernandonavarro@gmail.com')->send(new faqmail($faq)); 
+        Mail::to('pablo@stockintegligente.com')->send(new faqmail($faq));
 
         return redirect()->route('posts.index')->with('message', 'Pregunta Frecuente enviada exitosamente.');
     }
