@@ -38,7 +38,9 @@ class FaqController extends Controller
             'priority'    => 0,
             'created_by' => $createdBy,
         ]);
-        Mail::to('pablo@stockintegligente.com')->send(new faqmail($faq));
+        Mail::to('pablo@stockinteligente.com')
+                ->cc('pablofernandonavarro@gmail.com')        
+                ->send(new faqmail($faq));
 
         return redirect()->route('posts.index')->with('message', 'La consulta fue enviada exitosamente.');
     }
