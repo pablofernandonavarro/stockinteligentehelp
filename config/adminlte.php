@@ -365,31 +365,12 @@ return [
         ],
 
         [
-            'text' => 'Clientes',
+            'text' => 'multilevel',
             'icon' => 'fas fa-fw fa-share',
             'submenu' => [
                 [
-                    'text' => 'Yagmour',
+                    'text' => 'level_one',
                     'url' => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url' => '#',
-                        ],
-                        [
-                            'text' => 'level_two',
-                            'url' => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url' => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url' => '#',
-                                ],
-                            ],
-                        ],
                 ],
                 [
                     'text' => 'level_one',
