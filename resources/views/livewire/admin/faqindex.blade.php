@@ -1,5 +1,7 @@
 <div>
-
+    @section('content_header')
+    <h1 class="d-flex justify-content-center mx-auto my-auto">Preguntas frecuentes:</h1>
+    @stop
     <div>
 
     </div>

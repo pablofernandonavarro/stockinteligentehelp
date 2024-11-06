@@ -366,7 +366,7 @@ return [
         ['header' => 'Opiciones de Clientes'],
         [
             'text' => 'Clientes ABM',
-            'route' => 'admin.posts.index',
+            'route' => 'admin.customers',
             'icon' => 'fas fa-fw fa-clipboard',
         ],
         
