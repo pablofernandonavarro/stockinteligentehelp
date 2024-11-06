@@ -71,19 +71,8 @@
                             </div>
 
                             <div class="mb-6">
-                                <textarea name="question" rows="6" placeholder="Tu consulta" value="{{ old('question') }}"
-                                    class="
-                        w-full
-                        rounded
-                        py-3
-                        px-[14px]
-                        text-body-color text-base
-                        border border-[f0f0f0]
-                        resize-none
-                        outline-none
-                        focus-visible:shadow-none
-                        focus:border-primary
-                        "></textarea>
+                                <textarea name="question" rows="6" placeholder="Tu consulta" 
+                                    class="w-full rounded py-3 px-[14px] text-body-color text-base border border-[f0f0f0] resize-none outline-none focus-visible:shadow-none focus:border-primary">{{ old('question') }}</textarea>
                                 @error('question')
                                     <div class= "text-red-500">
                                         {{ $message }}
