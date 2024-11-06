@@ -40,8 +40,7 @@
                             @csrf
                             @method('POST')
                             <div class="mb-6">
-                                <input type="text" placeholder="Tu nombre"
-                                name="name"
+                                <input type="text" placeholder="Tu nombre" name="name"
                                     class="w-full rounded py-3 px-[14px] text-body-color text-base border border-[f0f0f0] outline-none focus-visible:shadow-none focus:border-primary" />
 
                                 @error('name')
@@ -71,7 +70,7 @@
                             </div>
 
                             <div class="mb-6">
-                                <textarea name="question" rows="6" placeholder="Tu consulta" 
+                                <textarea name="question" rows="6" placeholder="Tu consulta"
                                     class="w-full rounded py-3 px-[14px] text-body-color text-base border border-[f0f0f0] resize-none outline-none focus-visible:shadow-none focus:border-primary">{{ old('question') }}</textarea>
                                 @error('question')
                                     <div class= "text-red-500">
@@ -81,16 +80,7 @@
                             </div>
                             <div>
                                 <button type="submit"
-                                    class="
-                        w-full
-                        text-white
-                        bg-primary
-                        rounded
-                        border border-primary
-                        p-3
-                        transition
-                        hover:bg-opacity-90
-                        ">
+                                    class="w-full text-white bg-primary rounded border border-primary p-3 transition hover:bg-opacity-90">
                                     Enviar Consulta
                                 </button>
                             </div>
