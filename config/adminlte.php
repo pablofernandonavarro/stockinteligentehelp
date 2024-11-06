@@ -363,45 +363,48 @@ return [
             'route' => 'admin.posts.create',
             'icon' => 'fas fa-fw fa-file',
         ],
-
+        ['header' => 'Opiciones de Clientes'],
         [
-            'text' => 'multilevel',
-            'icon' => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url' => '#',
-                ],
-                [
-                    'text' => 'level_one',
-                    'url' => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url' => '#',
-                        ],
-                        [
-                            'text' => 'level_two',
-                            'url' => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url' => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url' => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url' => '#',
-                ],
-            ],
+            'text' => 'Clientes ABM',
+            'route' => 'admin.posts.index',
+            'icon' => 'fas fa-fw fa-clipboard',
         ],
+        
+        // [
+        //     'text' => 'Clientes',
+        //     'icon' => 'fas fa-fw fa-user',
+
+        //     'submenu' => [
+
+        //         [
+        //             'text' => 'ABM',
+        //             'icon' => 'fas fa-id-card',
+        //             'route' => 'admin.faqs.index',
+        //             'submenu' => [
+        //                 [
+        //                     'text' => 'Panel de control',
+        //                    'route' => 'admin.faqs.index',
+        //                 ],
+        //                 [
+        //                     'text' => 'Estadisticas',
+        //                     'url' => '#',
+        //                     'submenu' => [
+        //                         [
+        //                             'text' => 'Ventas',
+        //                             'url' => '#',
+        //                         ],
+        //                         [
+        //                             'text' => 'Consultas',
+        //                             'url' => '#',
+        //                         ],
+        //                     ],
+        //                 ],
+        //             ],
+        //         ],
+
+                
+        //     ],
+        // ],
 
     ],
 
