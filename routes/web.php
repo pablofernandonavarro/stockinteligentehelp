@@ -35,8 +35,5 @@ Route::get('/faqs',[FaqController::class,'index'])->name('faqs');
 Route::get('/faqs/formfaqs',[FaqController::class,'formfaqs'])->name('faqs.formfaqs');
 Route::post('/faqs/formfaqs',[FaqController::class,'process'])->name('faqs.process');
 
-Route::get('contactanos',function(){
 
-   Mail::to('pablofernandonavarro@gmail.com')->send(new  faqmail);
-});
 
