@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\FaqController;
 use App\Livewire\Admin\CrudFaqs;
 use App\Livewire\Admin\Faqindex;
 use App\Livewire\Admin\Customers;
+use App\Http\Controllers\admin\CustomerController;
 
 Route::get('',[HomeController::class,'index'])->name('admin.home');
 
@@ -28,3 +29,5 @@ Route::resource('faqs',FaqController::class)->names('admin.faqs');
 
 Route::get('search',Faqindex::class)->name('admin.faqs.search');
 Route::get('customers',Customers::class)->name('admin.customers');
+
+Route::get('customersshow/{customer}',[CustomerController::class,'show'])->name('admin.customers.show');
