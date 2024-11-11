@@ -9,14 +9,21 @@
             </a>
 
             <!-- Buscador -->
-            <div class="relative hidden md:block">
-                <input type="text" id="search" name="search" class="block w-80 p-2 text-sm bg-gray-100 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500" placeholder="Buscar...">
-                <button class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-200" type="button">
+            <form method="GET" action="{{ route('posts.index') }}" class="relative hidden md:block">
+                <input
+                    type="text"
+                    id="search"
+                    name="search"
+                    class="block w-80 p-2 text-sm bg-gray-100 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500"
+                    placeholder="Buscar..."
+                    value="{{ request('search') }}"
+                />
+                <button type="submit" class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-200">
                     <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17a6 6 0 100-12 6 6 0 000 12zm0 0l6 6m-6-6l-6 6" />
                     </svg>
                 </button>
-            </div>
+            </form>
 
             <!-- Botón de usuario y menú hamburguesa -->
             <div class="flex items-center space-x-3 rtl:space-x-reverse">

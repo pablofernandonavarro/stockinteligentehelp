@@ -9,29 +9,50 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
 class PostController extends Controller
-{  
-
-   
-
+{
     public function index()
-    {  
-        if (request()->page) {
-            $key = 'posts' . request()->page;
+    {
+        // Obtener el término de búsqueda y la página actual
+        $search = request()->input('search', '');
+        $page = request()->input('page', 1);
+
+        // Generar una clave única para el caché
+        $cacheKey = 'posts_' . $search . '_page_' . $page;
+
+        // Verificar si los resultados están en caché
+        if (Cache::has($cacheKey)) {
+            $posts = Cache::get($cacheKey);
         } else {
-            $key = 'posts';
+            // Crear la consulta inicial con la relación de categoría y filtro de estado
+            $query = Post::with('category')->where('status', 2);
+
+            // Si el usuario no es administrador, excluir la categoría "Stock_interna"
+            if (!auth()->user()->hasRole('Admin')) {
+                $query->whereHas('category', function ($q) {
+                    $q->where('name', '!=', 'Stock_interna');
+                });
+            }
+
+            // Si hay un término de búsqueda, aplicar filtro en el título y el contenido
+            if (!empty($search)) {
+                $query->where(function ($q) use ($search) {
+                    $q->where('title', 'like', '%' . $search . '%')
+                        ->orWhere('content', 'like', '%' . $search . '%');
+                });
+            }
+
+            // Ejecutar la consulta con paginación
+            $posts = $query->paginate(8);
+
+            // Guardar los resultados en caché
+            Cache::put($cacheKey, $posts, now()->addMinutes(10)); // Personaliza el tiempo de caché según tu necesidad
         }
-    
-        if (Cache::has($key)) {
-            $posts = Cache::get($key); // Aquí corregimos $post por $posts
-        } else {
-            // Asegúrate de cargar la relación 'categories'
-            $posts = Post::with('category')->where('status', 2)->paginate(8);
-            Cache::put($key, $posts);
-        }
-    
-        return view('posts.index', compact('posts'));
+
+        // Devolver la vista con los posts y el término de búsqueda
+        return view('posts.index', compact('posts', 'search'));
     }
-    
+
+
     public function show(Post $post)
     {
 
