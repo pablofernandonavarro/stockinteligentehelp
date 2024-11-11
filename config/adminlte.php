@@ -311,9 +311,9 @@ return [
         //     'text' => 'search',
         // ],
         [
-            'text' => 'blog',
-            'url' => 'admin/blog',
-            'can' => 'manage-blog',
+            'text' => 'Inicio',
+            'route' => 'admin.home',
+            'icon' => 'fa fa-rocket',
         ],
 
         [
@@ -323,6 +323,7 @@ return [
 
 
         ],
+
         [
             'text' => 'Roles',
             'route' => 'admin.roles.index',
@@ -369,7 +370,7 @@ return [
             'route' => 'admin.customers',
             'icon' => 'fas fa-fw fa-clipboard',
         ],
-        
+
         // [
         //     'text' => 'Clientes',
         //     'icon' => 'fas fa-fw fa-user',
@@ -402,7 +403,7 @@ return [
         //             ],
         //         ],
 
-                
+
         //     ],
         // ],
 
