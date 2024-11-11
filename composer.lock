@@ -1203,16 +1203,16 @@
         },
         {
             "name": "jeroennoten/laravel-adminlte",
-            "version": "v3.14.1",
+            "version": "v3.14.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jeroennoten/Laravel-AdminLTE.git",
-                "reference": "4dafd7931e0971ed75cca2efe052d891c783c1dd"
+                "reference": "dfd6b46be4a1c43338dfa1eb312030604ad95ef8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jeroennoten/Laravel-AdminLTE/zipball/4dafd7931e0971ed75cca2efe052d891c783c1dd",
-                "reference": "4dafd7931e0971ed75cca2efe052d891c783c1dd",
+                "url": "https://api.github.com/repos/jeroennoten/Laravel-AdminLTE/zipball/dfd6b46be4a1c43338dfa1eb312030604ad95ef8",
+                "reference": "dfd6b46be4a1c43338dfa1eb312030604ad95ef8",
                 "shasum": ""
             },
             "require": {
@@ -1256,9 +1256,9 @@
             ],
             "support": {
                 "issues": "https://github.com/jeroennoten/Laravel-AdminLTE/issues",
-                "source": "https://github.com/jeroennoten/Laravel-AdminLTE/tree/v3.14.1"
+                "source": "https://github.com/jeroennoten/Laravel-AdminLTE/tree/v3.14.2"
             },
-            "time": "2024-10-15T18:40:40+00:00"
+            "time": "2024-11-09T16:13:13+00:00"
         },
         {
             "name": "laravel/fortify",
@@ -2470,16 +2470,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "3.8.1",
+            "version": "3.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "10ac0aa86b8062219ce21e8189123d611ca3ecd9"
+                "reference": "e1268cdbc486d97ce23fef2c666dc3c6b6de9947"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/10ac0aa86b8062219ce21e8189123d611ca3ecd9",
-                "reference": "10ac0aa86b8062219ce21e8189123d611ca3ecd9",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/e1268cdbc486d97ce23fef2c666dc3c6b6de9947",
+                "reference": "e1268cdbc486d97ce23fef2c666dc3c6b6de9947",
                 "shasum": ""
             },
             "require": {
@@ -2572,7 +2572,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-11-03T16:02:24+00:00"
+            "time": "2024-11-07T17:46:48+00:00"
         },
         {
             "name": "nette/schema",
@@ -3857,16 +3857,16 @@
         },
         {
             "name": "spatie/laravel-permission",
-            "version": "6.10.0",
+            "version": "6.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-permission.git",
-                "reference": "2444bb914a52c570c00ae8c94e096a58e01b2317"
+                "reference": "8bb69d6d67387f7a00d93a2f5fab98860f06e704"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/2444bb914a52c570c00ae8c94e096a58e01b2317",
-                "reference": "2444bb914a52c570c00ae8c94e096a58e01b2317",
+                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/8bb69d6d67387f7a00d93a2f5fab98860f06e704",
+                "reference": "8bb69d6d67387f7a00d93a2f5fab98860f06e704",
                 "shasum": ""
             },
             "require": {
@@ -3928,7 +3928,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-permission/issues",
-                "source": "https://github.com/spatie/laravel-permission/tree/6.10.0"
+                "source": "https://github.com/spatie/laravel-permission/tree/6.10.1"
             },
             "funding": [
                 {
@@ -3936,7 +3936,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-11-05T17:30:49+00:00"
+            "time": "2024-11-08T18:45:41+00:00"
         },
         {
             "name": "symfony/clock",
@@ -6808,16 +6808,16 @@
         },
         {
             "name": "fakerphp/faker",
-            "version": "v1.23.1",
+            "version": "v1.24.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FakerPHP/Faker.git",
-                "reference": "bfb4fe148adbf78eff521199619b93a52ae3554b"
+                "reference": "a136842a532bac9ecd8a1c723852b09915d7db50"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/bfb4fe148adbf78eff521199619b93a52ae3554b",
-                "reference": "bfb4fe148adbf78eff521199619b93a52ae3554b",
+                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/a136842a532bac9ecd8a1c723852b09915d7db50",
+                "reference": "a136842a532bac9ecd8a1c723852b09915d7db50",
                 "shasum": ""
             },
             "require": {
@@ -6865,9 +6865,9 @@
             ],
             "support": {
                 "issues": "https://github.com/FakerPHP/Faker/issues",
-                "source": "https://github.com/FakerPHP/Faker/tree/v1.23.1"
+                "source": "https://github.com/FakerPHP/Faker/tree/v1.24.0"
             },
-            "time": "2024-01-02T13:46:09+00:00"
+            "time": "2024-11-07T15:11:20+00:00"
         },
         {
             "name": "filp/whoops",
@@ -7067,16 +7067,16 @@
         },
         {
             "name": "laravel-lang/lang",
-            "version": "15.9.2",
+            "version": "15.9.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Laravel-Lang/lang.git",
-                "reference": "88dbca09821a7e49edf5a1a53160a2ec21ceb389"
+                "reference": "48f7e2401929b15f0beff9a78e168e9596beea0b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Laravel-Lang/lang/zipball/88dbca09821a7e49edf5a1a53160a2ec21ceb389",
-                "reference": "88dbca09821a7e49edf5a1a53160a2ec21ceb389",
+                "url": "https://api.github.com/repos/Laravel-Lang/lang/zipball/48f7e2401929b15f0beff9a78e168e9596beea0b",
+                "reference": "48f7e2401929b15f0beff9a78e168e9596beea0b",
                 "shasum": ""
             },
             "require": {
@@ -7126,7 +7126,7 @@
                 "issues": "https://github.com/Laravel-Lang/lang/issues",
                 "source": "https://github.com/Laravel-Lang/lang"
             },
-            "time": "2024-11-03T10:29:41+00:00"
+            "time": "2024-11-04T11:47:57+00:00"
         },
         {
             "name": "laravel-lang/locale-list",
@@ -7777,16 +7777,16 @@
         },
         {
             "name": "myclabs/deep-copy",
-            "version": "1.12.0",
+            "version": "1.12.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "3a6b9a42cd8f8771bd4295d13e1423fa7f3d942c"
+                "reference": "123267b2c49fbf30d78a7b2d333f6be754b94845"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/3a6b9a42cd8f8771bd4295d13e1423fa7f3d942c",
-                "reference": "3a6b9a42cd8f8771bd4295d13e1423fa7f3d942c",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/123267b2c49fbf30d78a7b2d333f6be754b94845",
+                "reference": "123267b2c49fbf30d78a7b2d333f6be754b94845",
                 "shasum": ""
             },
             "require": {
@@ -7825,7 +7825,7 @@
             ],
             "support": {
                 "issues": "https://github.com/myclabs/DeepCopy/issues",
-                "source": "https://github.com/myclabs/DeepCopy/tree/1.12.0"
+                "source": "https://github.com/myclabs/DeepCopy/tree/1.12.1"
             },
             "funding": [
                 {
@@ -7833,7 +7833,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-06-12T14:39:25+00:00"
+            "time": "2024-11-08T17:47:46+00:00"
         },
         {
             "name": "nunomaduro/collision",

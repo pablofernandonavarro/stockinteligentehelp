@@ -25,6 +25,8 @@
             @endforeach
         </div>
     </div>
+    <hr>
+    <hr>
 @stop
 
 @section('css')

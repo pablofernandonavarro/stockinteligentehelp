@@ -25,7 +25,7 @@ class FaqController extends Controller
     public function store(FaqRequest $request)
     {
         Faq::create($request->only(['question', 'answer', 'category_id', 'is_active', 'priority']));
-        return redirect()->route('admin.faqs.index')->with('message', 'Pregunta Frecuente creada exitosamente.');
+        return redirect()->route('admin.faqs.index')->with('success', 'Pregunta Frecuente creada exitosamente.');
     }
 
     public function show(Faq $faq)
@@ -43,7 +43,7 @@ class FaqController extends Controller
     public function update(FaqRequest $request, Faq $faq)
     {
         $faq->update($request->only(['question', 'answer', 'category_id', 'is_active', 'priority']));
-        return redirect()->route('admin.faqs.index')->with('message', 'Pregunta Frecuente actualizada exitosamente.');
+        return to_route('admin.faqs.index')->with('success', 'Pregunta Frecuente actualizada exitosamente.');
     }
 
     public function destroy(Faq $faq)

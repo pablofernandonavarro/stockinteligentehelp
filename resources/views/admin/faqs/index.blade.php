@@ -5,10 +5,11 @@
 @section('content_header')
     <h1>Preguntas Frecuentes:</h1>
 @stop
-@if (session('success'))
-<div class="alert alert-success">{{ session('success') }}</div>
-@endif
+
 @section('content')
+
+
+
     <div>
 
         <div>
@@ -20,9 +21,7 @@
             </div>
             @if ($faqs->count())
                 <div class="card-body">
-                    @if (session('success'))
-                        <div class="alert alert-success">{{ session('success') }}</div>
-                    @endif
+
                     <div class="table-responsive">
                         <table class="table table-striped table-hover">
                             <thead>
@@ -94,11 +93,18 @@
 
 @section('css')
     {{-- Add here extra stylesheets --}}
-    {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
+     {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
 @stop
 
 @section('js')
+@if(session('success'))
     <script>
-        console.log("Hi, I'm using the Laravel-AdminLTE package!");
+        Swal.fire({
+            title: '¡Éxito!',
+            text: "{{ session('success') }}",
+            icon: 'success',
+            confirmButtonText: 'Aceptar'
+        });
     </script>
+@endif
 @stop

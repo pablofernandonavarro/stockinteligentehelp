@@ -26,8 +26,9 @@ class PostController extends Controller
             // Crear la consulta inicial con la relación de categoría y filtro de estado
             $query = Post::with('category')->where('status', 2);
 
-            // Si el usuario no es administrador, excluir la categoría "Stock_interna"
-            if (!auth()->user()->hasRole('Admin')) {
+            // Verificar si el usuario está autenticado antes de verificar el rol
+            if (auth()->check() && !auth()->user()->hasRole('Admin')) {
+                // Si no es administrador, excluir la categoría "Stock_interna"
                 $query->whereHas('category', function ($q) {
                     $q->where('name', '!=', 'Stock_interna');
                 });

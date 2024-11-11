@@ -57,7 +57,7 @@ class PostController extends Controller
             $post->etiquetas()->attach($request->etiquetas);
         }
 
-        return redirect()->route('admin.posts.index')->with('message', 'Post creado exitosamente.');
+        return redirect()->route('admin.posts.index')->with('success', 'Post creado exitosamente.');
     }
 
 
@@ -82,7 +82,7 @@ class PostController extends Controller
         $etiquetas =  Etiqueta::all();
 
 
-        return view("admin.posts.edit", compact('categories', 'etiquetas', 'post'))->with('message', 'Post actualizado exitosamente!!!!.');
+        return view("admin.posts.edit", compact('categories', 'etiquetas', 'post'))->with('success', 'Post actualizado exitosamente!!!!.');
     }
 
 
@@ -113,7 +113,7 @@ class PostController extends Controller
             $post->etiquetas()->sync($request->etiquetas);
         }
         Cache::flush();
-        return redirect()->route('admin.posts.index')->with('message', 'Post actualizado exitosamente!!!!.');
+        return redirect()->route('admin.posts.index')->with('success', 'Post actualizado exitosamente!!!!.');
     }
 
 
@@ -128,6 +128,6 @@ class PostController extends Controller
         $post->delete();
         Cache::flush();
 
-        return redirect()->route('admin.posts.index')->with('message', 'Post eliminado exitosamente!!!!!.');
+        return redirect()->route('admin.posts.index')->with('success', 'Post eliminado exitosamente!!!!!.');
     }
 }
