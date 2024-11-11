@@ -36,8 +36,8 @@ class PostController extends Controller
             // Si hay un término de búsqueda, aplicar filtro en el título y el contenido
             if (!empty($search)) {
                 $query->where(function ($q) use ($search) {
-                    $q->where('title', 'like', '%' . $search . '%')
-                        ->orWhere('content', 'like', '%' . $search . '%');
+                    $q->where('name', 'like', '%' . $search . '%')
+                        ->orWhere('extract', 'like', '%' . $search . '%');
                 });
             }
 
