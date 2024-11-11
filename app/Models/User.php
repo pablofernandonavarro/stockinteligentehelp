@@ -68,12 +68,16 @@ class User extends Authenticatable implements MustVerifyEmail
 
    public function posts(){
     return $this->hasMany(Post::class);
-   } 
- 
+   }
+
    public function etiquetas(){
     return $this->hasMany(Etiqueta::class);
-   } 
- 
+   }
 
-
+ public function adminlte_image(){
+  return url($this->profile_photo_url);
+ }
+ public function adminlte_profile_url(){
+    return url('user/profile');
+ }
 }
