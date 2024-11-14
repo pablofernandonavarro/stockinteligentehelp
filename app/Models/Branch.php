@@ -1,6 +1,6 @@
 <?php
 
-// app/Models/Branch.php
+
 
 namespace App\Models;
 

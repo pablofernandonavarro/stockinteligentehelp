@@ -3,7 +3,7 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use App\models\Branch;
+use App\Models\Branch;
 class Branchshow extends Component
 {
     public $customerId;
