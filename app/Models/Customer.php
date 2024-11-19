@@ -8,5 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Customer extends Model
 {
     use HasFactory;
-    protected $guarded = [];
+    protected $guarded = [
+        'name',
+        'address',
+        'email',
+        'phone',
+        'url',
+        'priority'
+    ];
+
+
+
 }

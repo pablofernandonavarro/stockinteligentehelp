@@ -12,8 +12,8 @@ class Branch extends Model
 {
     use HasFactory;
 
-    // Especificamos los campos que pueden ser asignados masivamente
-    protected $fillable = ['customer_id', 'branch_name', 'address', 'latitude', 'longitude','any_desk_id'];
+
+    protected $fillable = ['customer_id', 'branch_name', 'address', 'latitude', 'longitude','any_desk','anydesk_password'];
 
     /**
      * Relación: Una sucursal pertenece a un cliente.
