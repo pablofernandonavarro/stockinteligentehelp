@@ -25,7 +25,7 @@
 
                 <p class="text-center text-gray-600 text-base mt-9">
                     ¿Aún tienes preguntas?
-                    <a href="https://stockinteligente.com/"  class="text-blue-500 hover:underline">
+                    <a href="{{route('faqs.formfaqs')}}"  class="text-blue-500 hover:underline">
                     <span class="cursor-pointer font-medium text-tertiary transition-all duration-200 hover:text-tertiary focus:text-tertiary hover-underline">Contacta con nosotros</span>
                     </a>
                 </p>
