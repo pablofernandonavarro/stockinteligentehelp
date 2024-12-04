@@ -13,7 +13,7 @@
             <div class="card-header">
 
                 <input wire:model.live="search" type="search" class="form-control"
-                    placeholder="Ingrese el nombre de la publicacion a buscar" autofocus />
+                    placeholder="Ingrese el nombre de un cliente a buscar" autofocus />
 
             </div>
             <div>

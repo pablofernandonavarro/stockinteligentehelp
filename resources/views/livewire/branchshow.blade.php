@@ -14,11 +14,7 @@
                         <button wire:click="showModal()" class="btn btn-success btn-sm mb-3">Crear Sucursal</button>
                     </div>
 
-                    @if (session()->has('message'))
-                        <div class="alert alert-success">
-                            {{ session('message') }}
-                        </div>
-                    @endif
+
 
                     @if ($branches->count())
                         <div class="table-responsive">
@@ -42,14 +38,16 @@
 
                                                 <button wire:click="editar({{ $branch->id }})"
                                                     class="btn btn-primary btn-sm">Editar</button>
-                                                    <button wire:click="eliminar({{ $branch->id }})" class="btn btn-danger btn-sm"
-                                                        onclick="return confirm('¿Estás seguro de eliminar esta sucursal?')">Eliminar</button>
+                                                <button wire:click="eliminar({{ $branch->id }})"
+                                                    class="btn btn-danger btn-sm"
+                                                    onclick="return confirm('¿Estás seguro de eliminar esta sucursal?')">Eliminar</button>
                                             </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
                             </table>
                         </div>
+                        {{ $branches->links() }}
                     @else
                         <div class="alert alert-danger">No existe ninguna sucursal.</div>
                     @endif
@@ -107,13 +105,16 @@
                                 <div class="mb-3">
                                     <label for="anydesk_password" class="form-label">Any Desk Password</label>
                                     <div class="input-group">
-                                        <input :type="showPassword ? 'text' : 'password'" id="anydesk_password" class="form-control"
-                                            wire:model="anydesk_password">
-                                        <button type="button" class="btn btn-outline-secondary" @click="showPassword = !showPassword">
+                                        <input :type="showPassword ? 'text' : 'password'" id="anydesk_password"
+                                            class="form-control" wire:model="anydesk_password">
+                                        <button type="button" class="btn btn-outline-secondary"
+                                            @click="showPassword = !showPassword">
                                             <i :class="showPassword ? 'bi bi-eye-slash' : 'bi bi-eye'"></i>
                                         </button>
                                     </div>
-                                    @error('anydesk_password') <span class="text-danger">{{ $message }}</span> @enderror
+                                    @error('anydesk_password')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
                         </form>
@@ -121,22 +122,24 @@
                     <div class="modal-footer">
                         <button class="btn btn-secondary" wire:click="$set('modal', false)">Cancelar</button>
                         <button class="btn btn-primary" wire:click="save">Guardar</button>
+
+                    </div>
+
                     </div>
                 </div>
             </div>
-        </div>
     @endif
 </div>
 
 @section('css')
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 @stop
 
 @section('js')
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-</script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
 
 @stop
