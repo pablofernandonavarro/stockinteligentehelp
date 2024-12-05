@@ -14,43 +14,32 @@
                         <button wire:click="showModal()" class="btn btn-success btn-sm mb-3">Crear Sucursal</button>
                     </div>
 
-
-
-                    @if ($branches->count())
-                        <div class="table-responsive">
-                            <table class="table table-striped table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>Id</th>
-                                        <th>Nombre</th>
-                                        <th>Any Desk Id</th>
-
-                                        <th class="text-center">Acciones</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($branches as $branch)
-                                        <tr>
-                                            <td>{{ $branch->id }}</td>
-                                            <td>{{ $branch->branch_name }}</td>
-                                            <td>{{ $branch->any_desk }}</td>
-                                            <td class="text-center">
-
-                                                <button wire:click="editar({{ $branch->id }})"
-                                                    class="btn btn-primary btn-sm">Editar</button>
-                                                <button wire:click="eliminar({{ $branch->id }})"
-                                                    class="btn btn-danger btn-sm"
-                                                    onclick="return confirm('¿Estás seguro de eliminar esta sucursal?')">Eliminar</button>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                        {{ $branches->links() }}
-                    @else
-                        <div class="alert alert-danger">No existe ninguna sucursal.</div>
-                    @endif
+                    <table class="table table-fixed">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Conexión</th>
+                                <th>Accion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse($branches as $branch)
+                                <tr>
+                                    <td>{{ $branch->branch_name }}</td>
+                                    <td>{{ $branch->any_desk }}</td>
+                                    <td>
+                                        <a href=""class="btn btn-secondary btn-sm">ver</a>
+                                        <a href=""class="btn btn-secondary btn-sm">edit</a>
+                                        <a href=""class="btn btn-secondary btn-sm">elimi</a>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="2">No hay sucursales para este cliente.</td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
