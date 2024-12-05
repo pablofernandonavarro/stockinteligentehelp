@@ -28,8 +28,8 @@
                                     <td>{{ $branch->any_desk }}</td>
                                     <td>
                                         <a href=""class="btn btn-secondary btn-sm">ver</a>
-                                        <a href=""class="btn btn-secondary btn-sm">edit</a>
-                                        <a href=""class="btn btn-secondary btn-sm">elimi</a>
+                                        <a href=""class="btn btn-secondary btn-sm">editar</a>
+                                        <a href=""class="btn btn-secondary btn-sm">eliminar</a>
                                     </td>
                                 </tr>
                             @empty

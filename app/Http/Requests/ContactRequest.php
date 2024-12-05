@@ -25,7 +25,8 @@ class ContactRequest extends FormRequest
         'email'   => ['required','max:100','email'],
         'question'=> ['required','max:400','min:10'],
 
+
        ];
-        
+
     }
 }

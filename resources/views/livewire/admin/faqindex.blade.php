@@ -22,6 +22,7 @@
                     <thead>
                         <tr>
                             <th>Id</th>
+                            <th>Empresa</th>
                             <th>Pregunta</th>
                             <th>Respuesta</th>
                             <th>Categoria</th>
@@ -35,6 +36,7 @@
                         @foreach ($faqs as $faq)
                         <tr>
                             <td>{{ $faq->id }}</td>
+                            <td>{{$faq->company}}</td>
                             <td>{{ $faq->question }}</td>
                             <td>{{ $faq->answer }}</td>
                             <td>{{ $faq->category->name }}</td>

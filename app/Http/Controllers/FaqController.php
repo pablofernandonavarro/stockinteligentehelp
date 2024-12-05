@@ -22,7 +22,7 @@ class FaqController extends Controller
     public function formfaqs(Faq $faqs)
     {
 
-        return view('faqs.formfaqs', compact('faqs',));
+        return view('faqs.formfaqs', compact('faqs', ));
     }
 
     public function process(ContactRequest $request)
@@ -30,17 +30,18 @@ class FaqController extends Controller
 
         $createdBy = auth()->check() ? auth()->user()->id : null;
 
-       $faq = Faq::create([
-            'question'    => $request->input('question'),
-            'answer'      => ' ',
+        $faq = Faq::create([
+            'company' => $request->input('company'),
+            'question' => $request->input('question'),
+            'answer' => ' ',
             'category_id' => 1,
-            'is_active'   => false,
-            'priority'    => 0,
+            'is_active' => false,
+            'priority' => 0,
             'created_by' => $createdBy,
         ]);
         Mail::to('pablo@stockinteligente.com')
-                ->cc('pablofernandonavarro@gmail.com')        
-                ->send(new faqmail($faq));
+            ->cc(['info@stockinteligente.com', 'pablofernandonavarro@gmail.com'])
+            ->send(new faqmail($faq));
 
         return redirect()->route('posts.index')->with('message', 'La consulta fue enviada exitosamente.');
     }
