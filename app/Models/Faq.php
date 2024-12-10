@@ -14,6 +14,7 @@ class Faq extends Model
         'answer',
         'category_id',
         'is_active',
+        'company',
         'priority',
         'created_by',
     ];

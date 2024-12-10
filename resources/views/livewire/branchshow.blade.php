@@ -14,6 +14,7 @@
                         <button wire:click="showModal()" class="btn btn-success btn-sm mb-3">Crear Sucursal</button>
                     </div>
 
+<<<<<<< HEAD
                     @if (session()->has('message'))
                         <div class="alert alert-success">
                             {{ session('message') }}
@@ -53,6 +54,34 @@
                     @else
                         <div class="alert alert-danger">No existe ninguna sucursal.</div>
                     @endif
+=======
+                    <table class="table table-fixed">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Conexión</th>
+                                <th>Accion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse($branches as $branch)
+                                <tr>
+                                    <td>{{ $branch->branch_name }}</td>
+                                    <td>{{ $branch->any_desk }}</td>
+                                    <td>
+                                        <a href=""class="btn btn-secondary btn-sm">ver</a>
+                                        <a href=""class="btn btn-secondary btn-sm">editar</a>
+                                        <a href=""class="btn btn-secondary btn-sm">eliminar</a>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="2">No hay sucursales para este cliente.</td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+>>>>>>> 65e366247a352441340282f9e7a0cae4eacf2f6c
                 </div>
             </div>
         </div>
