@@ -30,7 +30,7 @@
                         
                         @if ($news->image)
                             <p><strong>Imagen:</strong></p>
-                            <img src="{{ asset('storage/' . $news->image) }}" alt="Imagen de {{ $news->title }}" class="img-fluid mb-3">
+                            <img src="{{ $news->image ? Storage::url($news->image) : asset('storage/CoreImages/SinPhoto.jpeg') }}" alt="Imagen de {{ $news->title }}" class="img-fluid mb-3">
                         @else
                             <p><strong>Imagen:</strong> No disponible</p>
                         @endif

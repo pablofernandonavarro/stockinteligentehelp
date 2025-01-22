@@ -3,7 +3,7 @@
     <div class="flex justify-center items-center min-h-screen bg-gray-100 ">
         <div class="max-w-3xl w-full bg-white shadow-md rounded-lg overflow-hidden border border-gray-300">
             <!-- Imagen de la noticia -->
-            <img src="https://picsum.photos/800/400" alt="Imagen de la noticia" class="w-full h-64 object-cover">
+            <img src="{{ $news->image ? Storage::url($news->image) : asset('storage/CoreImages/SinPhoto.jpeg') }}" alt="Imagen de la noticia" class="w-full h-64 object-cover">
 
             <!-- Contenido de la noticia -->
             <div class="p-6">
@@ -20,7 +20,7 @@
 
                 <!-- Subtítulo -->
                 <h2 class="text-xl font-semibold text-gray-600 mb-4 text-center">
-                    Este es el subtítulo de la noticia, breve pero impactante
+                   
                 </h2>
 
                 <!-- Contenido -->
