@@ -370,6 +370,12 @@ return [
             'route' => 'admin.customers',
             'icon' => 'fas fa-fw fa-clipboard',
         ],
+        ['header' => 'Opiciones de novedades'],
+        [
+            'text' => 'Novedades ABM',
+            'route' => 'admin.news.index',
+            'icon' => 'fas fa-bell',
+        ],
 
         // [
         //     'text' => 'Clientes',
