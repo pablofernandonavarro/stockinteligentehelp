@@ -9,7 +9,7 @@
             <div class="space-y-12">
                 @foreach ($news as $new)
                     <div class="relative bg-cover bg-center rounded-lg shadow-lg h-96"
-                         style="background-image: url('{{ 'https://picsum.photos/800/400' }}');">
+                    style="background-image: url('{{ $new->image ? Storage::url($new->image) : asset('storage/CoreImages/SinPhoto.jpeg') }}')">
                         <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-75 rounded-lg"></div>
                         <div class="absolute inset-0 flex flex-col justify-end p-8 text-white">
                             <h2 class="text-3xl font-bold mb-4">
