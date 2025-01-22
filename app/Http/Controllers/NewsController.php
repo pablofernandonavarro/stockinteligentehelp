@@ -9,7 +9,8 @@ use App\Models\User;
 class NewsController extends Controller
 {
     public function index(){
-        $news= News::all();
+        $news= News::where('status', 'published')->orderBy('created_at', 'desc')->get();
+
         return view('news.index',compact('news'));
     }
     public function show(News $news){
