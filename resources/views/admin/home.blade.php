@@ -11,21 +11,26 @@
         <div class="row">
             @foreach ($customers as $customer)
                 <div class="col-lg-3 col-6">
-                    <div class="small-box bg-info">
-                        <div class="inner">
-                            <h3>{{ $customer->name }}</h3>
-                            <p>Prioridad: {{ $customer->priority }}</p>
-                        </div>
-                        <div class="icon">
-                            <i class="ion ion-bag"></i>
-                        </div>
-                        <a href="{{$customer->url}}" class="small-box-footer" target="_blank" rel="noopener noreferrer">Ir al sitio:<i class="fas fa-arrow-circle-right"></i></a>
+                    <div class="small-box bg-info my-2">
+                        <a href="{{ route('admin.customers.show', $customer->id) }}" class="text-decoration-none text-white">
+                            <div class="inner">
+                                <h3>{{ $customer->name }}</h3>
+                                <p>Prioridad: {{ $customer->priority }}</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-bag"></i>
+                            </div>
+                        </a>
+                        <!-- Enlace al sitio externo dinámico del cliente -->
+                        <a href="{{ Str::startsWith($customer->url, 'http') ? $customer->url : 'http://' . $customer->url }}" class="small-box-footer text-white" target="_blank" rel="noopener noreferrer">
+                            Ir al sitio <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+
                     </div>
                 </div>
             @endforeach
         </div>
     </div>
-    <hr>
     <hr>
 @stop
 

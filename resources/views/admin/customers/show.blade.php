@@ -3,12 +3,12 @@
 @section('title', 'StockInteligente')
 
 @section('content_header')
-    <h2>Datos del Cliente:        <span class="text-danger"> {{$customer->name}}</span></h2>
+    <h2>Datos del Cliente:<span class="text-danger"> {{$customer->name}}</span></h2>
 @stop
 
 @section('content')
     <div class="row">
-        <div class="col-md-4 ">
+        <div class="col-md-4">
             <x-accordion :title="'Generales'" :accordionId="'accordionGenerales'" :id="'collapseGenerales'" :expanded="'false'" >
 
 
@@ -25,18 +25,15 @@
                     value="{{ $customer->priority }}" />
             </x-accordion>
         </div>
-        <div class="col-md-4 ">
+        <div class="col-md-4">
             <livewire:branchshow :customerId="$customer->id">
             </livewire:branchshow>
         </div>
-        <div class="col-md-4 ">
-            <x-accordion :title="'Tareas Pendienetes'" :accordionId="'accordiontasks'" :id="'collapsetasks'" :expanded="'false'" >
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis dicta eos sequi culpa maxime reprehenderit molestiae ipsam vel consequatur totam? Nostrum, pariatur perferendis. Laboriosam, perspiciatis! Quod maxime voluptatum sunt quos.
-
-                </p>
+        <div class="col-md-4">
+            <x-accordion :title="'Tareas Pendientes'" :accordionId="'accordiontasks'" :id="'collapsetasks'" :expanded="'false'" >
+             <H6>HKHDK</H6>
             </x-accordion>
-
         </div>
     </div>
-    </div>
+
 @stop
