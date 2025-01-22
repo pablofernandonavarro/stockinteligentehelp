@@ -11,13 +11,13 @@
                     <div class="relative bg-cover bg-center rounded-lg shadow-lg h-96"
                     style="background-image: url('{{ $new->image ? Storage::url($new->image) : asset('storage/CoreImages/SinPhoto.jpeg') }}')">
                         <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-75 rounded-lg"></div>
-                        <div class="absolute inset-0 flex flex-col justify-end p-8 text-white">
+                        <div class="absolute inset-0 flex flex-col justify-end p-8 text-black">
                             <h2 class="text-3xl font-bold mb-4">
                                 {{ $new->title }}
                             </h2>
                             
                             <a href="{{ route('news.show', $new) }}"
-                               class="inline-block px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg">
+                               class="inline-block px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-black font-medium rounded-lg">
                                 Leer más
                             </a>
                         </div>
