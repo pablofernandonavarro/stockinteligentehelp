@@ -45,7 +45,7 @@
                             <tr>
                                 <th>Id</th>
                                 <th>Nombre</th>
-                                <th>Direccion</th>
+                                <th>Dirección</th>
                                 <th>email</th>
                                 <th>url</th>
                                 <th>Prioridad</th>

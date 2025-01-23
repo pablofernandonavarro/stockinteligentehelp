@@ -10,7 +10,7 @@ class Customers extends Component
 {
     use WithPagination;
 
-    public $name, $phone, $address, $email, $priority,$url;
+    public $name, $phone, $address, $email, $priority, $url;
     public $customerId = null;
     public $modal = false;
     public $search = ""; // Campo para el término de búsqueda
@@ -36,6 +36,7 @@ class Customers extends Component
     public function crear()
     {
         $this->limpiarCampos();
+        $this->customerId = null;
         $this->abrirModal();
     }
 
@@ -77,21 +78,39 @@ class Customers extends Component
     {
         Customer::find($id)->delete();
     }
-
     public function guardar()
     {
-        Customer::updateOrCreate(
-            ['id' => $this->customerId],
-            [
-                'name' => $this->name,
-                'phone' => $this->phone,
-                'address' => $this->address,
-                'email' => $this->email,
-                'priority' => $this->priority,
-                'url' => $this->url
-            ]
-        );
+        // Validar los datos antes de guardarlos
+        $this->validate([
+            'name' => 'required|string|max:255',
+            'phone' => 'nullable|string|max:255',
+            'address' => 'nullable|string|max:255',
+            'email' => 'nullable|email|max:255',
+            'priority' => 'required|nullable|integer',
+            'url' => 'nullable|url|max:255'
+        ]);
+        $priorityValue = $this->priority !== '' ? $this->priority : 0;
+        // Si el id está vacío o no existe, será considerado un nuevo registro
+        if ($this->customerId) {
+            // Si existe un ID, actualizamos el registro existente
+            $customer = Customer::findOrFail($this->customerId);
+        } else {
+            // Si no hay ID, estamos creando un nuevo cliente
+            $customer = new Customer();
+        }
 
+        // Guardar o actualizar el cliente directamente
+        $customer->name = $this->name;
+        $customer->phone = $this->phone;
+        $customer->address = $this->address;
+        $customer->email = $this->email;
+        $customer->priority = $this->priority;
+        $customer->url = $this->url;
+
+        // Guardamos el cliente (si es un nuevo cliente, se inserta; si es uno existente, se actualiza)
+        $customer->save();
+
+        // Cerrar el modal y limpiar los campos
         $this->cerrarModal();
         $this->limpiarCampos();
     }

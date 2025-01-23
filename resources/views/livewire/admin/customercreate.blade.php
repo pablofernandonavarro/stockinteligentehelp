@@ -12,30 +12,48 @@
                     <div class="form-group">
                         <label>Nombre:</label>
                         <input type="text" wire:model="name" class="form-control">
+                        @error('name') 
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
 
                     <div class="form-group">
                         <label>Teléfono:</label>
                         <input type="text" wire:model="phone" class="form-control">
+                        @error('phone')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
 
                     <div class="form-group">
                         <label>Dirección:</label>
                         <input type="text" wire:model="address" class="form-control">
+                        @error('address')   
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
 
                     <div class="form-group">
                         <label>Correo Electrónico:</label>
                         <input type="email" wire:model="email" class="form-control">
+                        @error('email')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
 
                     <div class="form-group">
                         <label>Prioridad:</label>
                         <input type="number" wire:model="priority" class="form-control">
+                        @error('priority')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label>URL:</label>
                         <input type="text" wire:model="url" class="form-control">
+                        @error('url')   
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                 </form>
             </div>
